@@ -13,6 +13,16 @@ const nextConfig = withLess({
       },
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.byteimg.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 })
 
 module.exports = nextConfig

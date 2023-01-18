@@ -5,12 +5,26 @@
 
 .header {
   height: 60px;
-
   max-width: 1440px;
   margin: 0 auto;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  .logo {
+    .mobile {
+      display: none;
+      width: 31px;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    height: 100%;
+    margin: 0;
+  }
 }
- 
