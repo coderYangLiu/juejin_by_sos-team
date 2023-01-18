@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Use [ npm run commit ] to commit"
+npx --no-install commitlint --edit 

@@ -1,0 +1,17 @@
+@import '@/styles/variables.less';
+
+.main {
+  position: relative;
+  
+  .left {
+    background-color: var(--color-bg-2);
+    width: @contentWidth;
+  }
+
+  .right {
+    position: absolute;
+    width: @sidebarWidth;
+    top: 0;
+    right: 0;
+  }
+}
