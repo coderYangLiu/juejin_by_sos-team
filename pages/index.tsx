@@ -1,20 +1,10 @@
 import type { ReactElement } from 'react'
-import { useEffect } from 'react'
-import axios from 'axios'
 import type { NextPageWithLayout } from '@/pages/_app'
 
 import HomeLayout from '@/components/lauout/home'
 import { EntryItem } from '@/components/home-list'
 
 const Home: NextPageWithLayout = () => {
-  useEffect(() => {
-    async function fetchData() {
-      const data = await axios.get('https://sos.staraway.love/api/layouts/1?populate=*')
-      console.log(data.data.data.header_navs)
-    }
-    fetchData()
-    console.log('Home')
-  }, [])
   return (
     <div>
       <h2>最新  xx  xx</h2>
@@ -27,13 +17,11 @@ const Home: NextPageWithLayout = () => {
   )
 }
 
-Home.getLayout = (page: ReactElement) => {
-  return (
-    <>
-      <HomeLayout>{page}</HomeLayout>
-    </>
-  )
-}
+Home.getLayout = (page: ReactElement) => (
+  <>
+    <HomeLayout navData={[1, 2, 3]}>{page}</HomeLayout>
+  </>
+)
 
 Home.displayName = 'Home'
 export default Home

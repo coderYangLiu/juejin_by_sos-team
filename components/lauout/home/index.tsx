@@ -2,26 +2,26 @@ import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
 import style from './index.module.less'
 
-import { HomeFooter } from './cpns'
 import BaseLayout from '@/components/lauout'
 
 export interface IProps {
   children?: ReactElement
+  navData: any[]
 }
 
 const HomeLayout: FC<IProps> = memo((props) => {
-  const { children } = props
+  const { children, navData } = props
 
   return (
     <BaseLayout>
       <div className='wrapper'>
       <div>
         <span>component-layout-home</span>
-        {/* {
+        {
           navData?.map(item => (
-            <span key={item.id}> {item.title} </span>
+            <span key={item}> {item} - HomeNav </span>
           ))
-        } */}
+        }
       </div>
 
         <div className={style.main}>
@@ -35,7 +35,7 @@ const HomeLayout: FC<IProps> = memo((props) => {
             right 组件 <br />
             right 组件 <br />
 
-            <HomeFooter/>
+            footer
           </div>
         </div>
       </div>
