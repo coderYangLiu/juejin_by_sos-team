@@ -21,6 +21,12 @@ const nextConfig = withLess({
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: '*.bytescm.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 })
