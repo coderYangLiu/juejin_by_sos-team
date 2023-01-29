@@ -5,6 +5,7 @@ import type { NextPageWithLayout } from '@/pages/_app'
 
 import HomeLayout from '@/components/lauout/home'
 import { EntryItem } from '@/components/home-list'
+import { AdvertisementItem } from '@/components/home-list'
 
 const Home: NextPageWithLayout = () => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const Home: NextPageWithLayout = () => {
       <EntryItem />
       <EntryItem />
       <EntryItem />
+      <AdvertisementItem />
     </div>
   )
 }
