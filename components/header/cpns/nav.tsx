@@ -13,11 +13,8 @@ const HeaderNav: FC<IProps> = memo(() => {
       <Link href={'/'}>
         <Button type="primary">home</Button>
       </Link>
-      <Link href={'/fetch'}>
-        <Button type="primary">fetch</Button>
-      </Link>
-      <Link href={'/pins'}>
-        <Button type="primary">pins</Button>
+      <Link href={'/post/1'}>
+        <Button type="primary">post/1</Button>
       </Link>
       <Link href={'/test'}>
         <Button type="primary">test</Button>
