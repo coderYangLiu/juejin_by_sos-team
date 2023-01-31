@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { Button, Card } from '@arco-design/web-react'
 import styles from './index.module.less'
-import { AdvertisementItem, EntryItem } from '@/components/home-list'
+import { AdvertisementItem, EntryItem } from '@/components/home/list'
 import HomeFooter from '@/components/home/footer'
 
 const Home: FC = () => {

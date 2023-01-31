@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
-import { AdvertisementItem, EntryItem } from '@/components/home-list'
+import { AdvertisementItem, EntryItem } from '@/components/home/list'
 import { useScroll } from '@/hooks/useScroll'
 
 export interface IProps {
