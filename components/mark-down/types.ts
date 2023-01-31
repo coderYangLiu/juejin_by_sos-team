@@ -1,6 +1,6 @@
-import type { BytemdViewerContext } from "bytemd";
-import type { VFile } from 'vfile';
-import { IHighlightKeys, IThemeKeys } from "./themes";
+import type { BytemdViewerContext } from 'bytemd'
+import type { VFile } from 'vfile'
+import type { IHighlightKeys, IThemeKeys } from './themes'
 
 export interface IViewerContext extends BytemdViewerContext {
   file: VFile & {
