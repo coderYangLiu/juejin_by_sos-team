@@ -20,24 +20,20 @@ const PostTOC: FC<IProps> = memo(() => {
   const [headings, setHeadings] = useState<ICatalogue[]>([])
   const [activeIdx, setActiveIdx] = useState(0)
 
-  const onScroll = debounce(() => {
-    let index = headings.findIndex((item) => {
-      return item.top > window.scrollY
-    })
-    index = index >= 1 ? index - 1 : 0
-
-    setActiveIdx(index)
-    if (document)
-      document.querySelector(`a[href='#heading-${index}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-  }, 150)
-
-  onScroll()
-
   function transformToId(index: number) {
     document.querySelector(`#heading-${index}`)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   useEffect(() => {
+    const onScroll = debounce(() => {
+      let index = headings.findIndex((item) => {
+        return item.top > window.scrollY
+      })
+      index = index >= 1 ? index - 1 : 0
+
+      setActiveIdx(index)
+      document.querySelector(`a[href='#heading-${index}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 150)
     window?.addEventListener('scroll', onScroll)
 
     return () => {

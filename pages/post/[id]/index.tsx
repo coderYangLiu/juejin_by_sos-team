@@ -3,10 +3,11 @@ import type { FC, ReactElement } from 'react'
 import { useRouter } from 'next/router'
 import type { GetServerSideProps } from 'next'
 import { Affix } from '@arco-design/web-react'
+import dynamic from 'next/dynamic'
 import styles from './index.module.less'
 import MarkDown from '@/components/mark-down'
-import PostTOC from '@/components/post/toc'
 
+const PostTOC = dynamic(() => import('@/components/post/toc'))
 export interface IProps {
   children?: ReactElement
 }
