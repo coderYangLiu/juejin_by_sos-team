@@ -21,6 +21,7 @@ const PostTOC: FC<IProps> = memo(() => {
   const [activeIdx, setActiveIdx] = useState(0)
 
   function transformToId(index: number) {
+    setActiveIdx(index)
     document.querySelector(`#heading-${index}`)?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -34,6 +35,7 @@ const PostTOC: FC<IProps> = memo(() => {
       setActiveIdx(index)
       document.querySelector(`a[href='#heading-${index}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }, 150)
+
     window?.addEventListener('scroll', onScroll)
 
     return () => {
@@ -44,8 +46,7 @@ const PostTOC: FC<IProps> = memo(() => {
   useEffect(() => {
     const markDownEl = document.querySelector('.markdown-body')
 
-    // @ts-expect-error for querySelectorAll
-    const hs: HTMLHeadElement[] = markDownEl!.querySelectorAll('h1,h2,h3,h4,h5,h6')
+    const hs: HTMLHeadElement[] = Array.from(markDownEl!.querySelectorAll('h1,h2,h3,h4,h5,h6'))
     const catalogue: ICatalogue[] = []
     hs.forEach((item, idx) => {
       const h = parseInt(item.nodeName.substring(1, 2))

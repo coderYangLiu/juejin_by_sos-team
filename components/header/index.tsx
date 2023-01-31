@@ -18,14 +18,13 @@ const Header: FC<IProps> = memo(() => {
     // 包裹一层方便布局
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <Link href="/" className={styles.logo} data-v-77c302d8="">
+        <Link href="/" className={styles.logo}>
           <Image
             src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg"
             alt="稀土掘金"
             width={107}
             height={22}
             className={styles['logo-img']}
-            data-v-77c302d8=""
           />
           <Image
             src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg"

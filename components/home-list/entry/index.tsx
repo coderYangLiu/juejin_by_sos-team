@@ -10,7 +10,7 @@ export interface IProps {
 const EntryItem: FC<IProps> = memo(() => {
   return (
     <div className=''>
-      <BaseItem actionList={<ActionList/>} />
+      <BaseItem actionList={<ActionList />} />
     </div>
   )
 })

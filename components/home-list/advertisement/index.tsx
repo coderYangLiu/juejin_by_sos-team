@@ -11,7 +11,7 @@ const AdvertisementItem: FC<IProps> = memo(() => {
 
   const tag = (<>广告</>)
   return (
-    <div className=''>
+    <div className='ad'>
       <BaseItem tag={tag}/>
     </div>
   )

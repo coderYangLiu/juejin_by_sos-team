@@ -1,13 +1,24 @@
 // glabal variables
 @mainWith: 960px;
-@sidebarWidth: 240px;
-@contentWidth: 700px;
+@postWith: 1140px;
+
+@homeContentWidth: 700px;
+@homeSidebarWidth: 240px;
+
+@postContentWidth: 820px;
+@postSidebarWidth: 300px;
 
 // wrapper
-.wrapper {
-  width: 100%;
-  max-width: @mainWith;
+.home-wrapper {
+  width: @mainWith;
   margin: 0 auto;
+  position: relative;
+}
+
+.post-wrapper {
+  width: @postWith;
+  margin: 0 auto;
+  position: relative;
 }
 
 // flex 布局

@@ -1,28 +1,23 @@
-.post-wrapper {
-  width: 1140px;
-  margin: 0 auto;
+@import '@/styles/variables.less';
 
-  position: relative;
+.left {
+  width: @postContentWidth;
+  background-color: var(--color-bg-2);
+  padding: 32px 32px 0 32px;
+  box-sizing: border-box;
+}
 
-  .left {
-    width: 820px;
-    background-color: var(--color-bg-2);
-    padding: 32px 32px 0 32px;
-    box-sizing: border-box;
-  }
+.right {
+  width: @postSidebarWidth;
 
-  .right {
-    width: 300px;
+  position: absolute;
+  top: 0;
+  right: 0;
 
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    .article-catalog {
-      background: #fff;
-      border-radius: 4px;
-      padding: 0;
-      width: 300px;
-    }
+  .article-catalog {
+    background: #fff;
+    border-radius: 4px;
+    padding: 0;
+    // width: 300px;
   }
 }
