@@ -38,7 +38,6 @@ const Header: FC<IProps> = memo(() => {
 
         <div className={styles['nav-list']}>
           <HeaderNav />
-
           <div className={styles['right-side-nav']}>
             <Button type="primary" onClick={setDark}>
               change Theme
