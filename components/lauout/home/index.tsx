@@ -2,7 +2,7 @@ import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
 import style from './index.module.less'
 
-import { HomeFooter,Register } from './cpns'
+import { HomeFooter,Register,Download } from './cpns'
 import BaseLayout from '@/components/lauout'
 
 export interface IProps {
@@ -15,28 +15,29 @@ const HomeLayout: FC<IProps> = memo((props) => {
   return (
     <BaseLayout>
       <div className='wrapper'>
-      <div>
-        <span>component-layout-home</span>
-        {/* {
-          navData?.map(item => (
-            <span key={item.id}> {item.title} </span>
-          ))
-        } */}
-      </div>
+        <div>
+          <span>component-layout-home</span>
+          {/* {
+            navData?.map(item => (
+              <span key={item.id}> {item.title} </span>
+            ))
+          } */}
+        </div>
 
         <div className={style.main}>
           <div className={style.left}>{ children }</div>
-
+          
           <div className={style.right}>
-          {/* 直接在这个文件夹下写 或者 传组件进来 */}
+          {/* 直接在这个文件夹下写 或者 传组件进来*/}
             <Register/>
+            <Download/>
             component-layout-home <br />
             right 组件 <br />
             right 组件 <br />
             right 组件 <br />
             right 组件 <br />
 
-            <HomeFooter/>
+            <HomeFooter/>{/*公司地址，网安备份号等 */}
           </div>
         </div>
       </div>
