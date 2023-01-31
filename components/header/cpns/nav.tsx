@@ -58,7 +58,7 @@ const HeaderNav: FC<IProps> = memo((props) => {
           <span>{list[active]}</span>
           <span className={`${styles.navArrow} ${listOpen ? styles.navArrowReversed : ''}`}></span>
         </div>
-      </Trigger>
+      </Trigger> 
     </>
   )
 })

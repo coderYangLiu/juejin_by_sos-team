@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
-import style from './index.module.less'
+import { Button, Card } from '@arco-design/web-react'
+import styles from './index.module.less'
 
 import { HomeFooter,Register,Download } from './cpns'
 import BaseLayout from '@/components/lauout'
@@ -31,13 +32,32 @@ const HomeLayout: FC<IProps> = memo((props) => {
           {/* 直接在这个文件夹下写 或者 传组件进来*/}
             <Register/>
             <Download/>
+      <div className="wrapper">
+        <div>
+          <span>component-layout-home</span>
+          {/* {
+          navData?.map(item => (
+            <span key={item.id}> {item.title} </span>
+          ))
+        } */}
+        </div>
+
+        <div className={styles.main}>
+          <div className={styles.left}>{children}</div>
+
+          <div className={styles.right}>
+            {/* 直接在这个文件夹下写 或者 传组件进来 */}
             component-layout-home <br />
+            <Card hoverable bordered={false} >
+              Card content <Button type='outline'>More</Button>
+            </Card>
             right 组件 <br />
             right 组件 <br />
             right 组件 <br />
             right 组件 <br />
 
             <HomeFooter/>{/*公司地址，网安备份号等 */}
+            <HomeFooter />
           </div>
         </div>
       </div>
