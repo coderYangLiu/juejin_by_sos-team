@@ -65,7 +65,7 @@ const PostTOC: FC<IProps> = memo(() => {
     })
 
     setHeadings(catalogue)
-  }, [])
+  }, [minLevel])
 
   return (
     <>
