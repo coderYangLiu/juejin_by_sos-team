@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
+import BaseItem from '../base'
 
 export interface IProps {
   children?: ReactElement
@@ -8,9 +9,10 @@ export interface IProps {
 const AdvertisementItem: FC<IProps> = memo(() => {
   // const { children } = props
 
+  const tag = (<>广告</>)
   return (
     <div className=''>
-      AdvertisementItem  广告
+      <BaseItem tag={tag}/>
     </div>
   )
 })

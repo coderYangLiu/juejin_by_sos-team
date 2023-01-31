@@ -1,7 +1,6 @@
 @import "@arco-design/web-react/dist/css/index.less";
 @import './variables.less';
 @import "normalize.css";
-@import './markdown.css';
 
 html,
 body {
@@ -25,10 +24,14 @@ ul {
   margin: 0;
 }
 
+li {
+  list-style: none;
+}
+
 a {
   text-decoration: none;
   cursor: pointer;
-  color: var(--color-neutral-4);
+  color: var(--color-neutral-6);
 
   &:hover {
     color: rgb(var(--arcoblue-5));

@@ -3,7 +3,7 @@
 .entry {
   cursor: pointer;
   position: relative;
-  background: #fff;
+  background: var(--color-bg-1);
   padding: 12px 20px 0;
   display: flex;
   flex-direction: column;
@@ -19,15 +19,13 @@
     position: absolute;
     top: 12px;
     right: 20px;
-    // border: 1px solid var(--color-neutral-3);
-    border: 1px solid #c9cdd4;
+    border: 1px solid var(--color-neutral-3); 
     box-sizing: border-box;
     border-radius: 2px;
     line-height: 18px;
     width: 42px;
     text-align: center;
-    // color: var(--color-neutral-8);
-    color: #c9cdd4;
+    color: var(--color-neutral-8); 
     font-size: 13px;
   }
 
@@ -58,11 +56,6 @@
 
           .text-multi-ellipsis(1);
         }
-      }
-
-      .action-list {
-        display: flex;
-        align-items: center;
       }
     }
   }

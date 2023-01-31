@@ -4,7 +4,7 @@ import axios from 'axios'
 import type { NextPageWithLayout } from '@/pages/_app'
 
 import HomeLayout from '@/components/lauout/home'
-import { EntryItem } from '@/components/home-list'
+import { AdvertisementItem, EntryItem } from '@/components/home-list'
 
 const Home: NextPageWithLayout = () => {
   useEffect(() => {
@@ -19,10 +19,15 @@ const Home: NextPageWithLayout = () => {
     <div>
       <h2>最新  xx  xx</h2>
 
+      <AdvertisementItem />
       <EntryItem />
       <EntryItem />
       <EntryItem />
       <EntryItem />
+      <EntryItem />
+      <EntryItem />
+      <EntryItem />
+      <AdvertisementItem />
     </div>
   )
 }

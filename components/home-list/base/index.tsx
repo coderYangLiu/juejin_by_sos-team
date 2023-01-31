@@ -5,11 +5,12 @@ import styles from './index.module.less'
 
 export interface IProps {
   children?: ReactElement
-  actionList?: ReactElement
+  tag?: ReactElement
+  actionList?: ReactElement // 查看/点赞/评论
 }
 
 const BaseItem: FC<IProps> = memo((props) => {
-  const { actionList } = props
+  const { actionList, tag } = props
 
   return (
     <div className={styles.entry}>
@@ -18,7 +19,7 @@ const BaseItem: FC<IProps> = memo((props) => {
         <a href="">后端</a>
       </div>
 
-      <div className={styles.tag}>广告</div>
+      {tag && <div className={styles.tag}> {tag} </div>}
 
       <div className={styles['content-wrapper']}>
         <div className={styles.main}>
@@ -31,7 +32,9 @@ const BaseItem: FC<IProps> = memo((props) => {
               sit cumque! Eaque iusto sit vitae cum molestiae harum veritatis, nemo amet modi, beatae officiis.
             </a>
           </div>
-          {actionList && <ul className={styles['action-list']}>{actionList}</ul>}
+
+          {/*  */}
+          {actionList}
         </div>
 
         <Image

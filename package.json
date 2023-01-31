@@ -12,6 +12,10 @@
   },
   "dependencies": {
     "@arco-design/web-react": "^2.44.0",
+    "@bytemd/plugin-frontmatter": "^1.20.2",
+    "@bytemd/plugin-gfm": "^1.20.2",
+    "@bytemd/plugin-highlight-ssr": "^1.20.2",
+    "@bytemd/react": "^1.20.2",
     "@next/font": "13.1.2",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
