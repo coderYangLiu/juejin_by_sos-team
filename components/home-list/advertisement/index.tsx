@@ -1,13 +1,18 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
+
 import BaseItem from '../base'
 
 export interface IProps {
-  children?: ReactElement
-}
+  username?: string;
+  title?: string;
+  description?: string;
+  imgsrc?: string;
+  imgalt?: string;
+}//日期的部分需要和后端协商一下
 
-const AdvertisementItem: FC<IProps> = memo(() => {
-  // const { children } = props
+const AdvertisementItem: FC<IProps> = memo((props) => {
+const{username, title, description, imgsrc, imgalt} =   props;
 
   const tag = (<>广告</>)
   return (

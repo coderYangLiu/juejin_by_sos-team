@@ -3,7 +3,7 @@ import type { FC, ReactElement } from 'react'
 import { Button, Card } from '@arco-design/web-react'
 import styles from './index.module.less'
 
-import { HomeFooter } from './cpns'
+import { HomeFooter,Register,Download } from './cpns'
 import BaseLayout from '@/components/lauout'
 
 export interface IProps {
@@ -15,6 +15,23 @@ const HomeLayout: FC<IProps> = memo((props) => {
 
   return (
     <BaseLayout>
+      <div className='wrapper'>
+        <div>
+          <span>component-layout-home</span>
+          {/* {
+            navData?.map(item => (
+              <span key={item.id}> {item.title} </span>
+            ))
+          } */}
+        </div>
+
+        <div className={style.main}>
+          <div className={style.left}>{ children }</div>
+          
+          <div className={style.right}>
+          {/* 直接在这个文件夹下写 或者 传组件进来*/}
+            <Register/>
+            <Download/>
       <div className="wrapper">
         <div>
           <span>component-layout-home</span>
@@ -37,6 +54,9 @@ const HomeLayout: FC<IProps> = memo((props) => {
             right 组件 <br />
             right 组件 <br />
             right 组件 <br />
+            right 组件 <br />
+
+            <HomeFooter/>{/*公司地址，网安备份号等 */}
             <HomeFooter />
           </div>
         </div>
