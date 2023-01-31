@@ -2,10 +2,11 @@ import type { FC } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 
-import { Button, Card } from '@arco-design/web-react'
 import styles from './index.module.less'
+
 import { AdvertisementItem, EntryItem } from '@/components/home/list'
 import HomeFooter from '@/components/home/footer'
+import { Banner, Download, Links, Signin } from '@/components/home/card'
 
 const Home: FC = () => {
   useEffect(() => {
@@ -46,13 +47,15 @@ const Home: FC = () => {
         </div>
 
         <div className={styles.right}>
-          component-layout-home <br />
-          <Card hoverable bordered={false}>
-            Card content <Button type="outline">More</Button>
-          </Card>
-          right 组件 <br />
-          right 组件 <br />
-          right 组件 <br />
+          <Signin />
+
+          <Banner />
+          <Banner />
+
+          <Download />
+
+          <Links />
+
           <HomeFooter />
         </div>
       </div>

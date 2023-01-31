@@ -17,7 +17,7 @@ const nextConfig = withLess({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '*.byteimg.com',
+        hostname: '*.com',
         port: '',
         pathname: '/**',
       },

@@ -1,0 +1,36 @@
+.banner {
+  position: relative;
+  box-shadow: none;
+  line-height: 0;
+
+  .banner-desc{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    
+    height: 36px;
+    line-height: 36px;
+    font-size: 20px;
+    z-index: 1;
+    transform: scale(.5); 
+    transform-origin: right bottom; 
+    
+    color: #fff;
+    background-color: rgba(0,0,0,.2);
+    border: 1px solid #fff;
+    border-radius: 6px;
+    padding: 0 16px;
+    font-weight: 300;
+
+    .inco {
+      display: none;
+      margin-right: 8px;
+    }
+
+    &:hover {
+      .inco {
+        display: inline-block;
+      }
+    }
+  }
+}

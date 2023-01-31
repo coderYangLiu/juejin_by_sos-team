@@ -2,7 +2,7 @@ import { memo, useState } from 'react'
 import type { FC } from 'react'
 import Link from 'next/link'
 import { Trigger } from '@arco-design/web-react'
-import styles from './nav.module.less'
+import styles from './index.module.less'
 
 export interface IProps {
   active: number
