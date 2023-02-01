@@ -6,7 +6,7 @@ import styles from './index.module.less'
 
 import { AdvertisementItem, EntryItem } from '@/components/home/list'
 import HomeFooter from '@/components/home/footer'
-import { Banner, Download, Links, Signin } from '@/components/home/card'
+import { HomeBanner, HomeDownload, HomeLinks, HomeSignin } from '@/components/home/card'
 
 const Home: FC = () => {
   useEffect(() => {
@@ -47,14 +47,14 @@ const Home: FC = () => {
         </div>
 
         <div className={styles.right}>
-          <Signin />
+          <HomeSignin />
 
-          <Banner />
-          <Banner />
+          <HomeBanner />
+          <HomeBanner />
 
-          <Download />
+          <HomeDownload />
 
-          <Links />
+          <HomeLinks />
 
           <HomeFooter />
         </div>

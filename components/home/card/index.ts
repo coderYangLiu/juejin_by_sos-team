@@ -1,11 +1,11 @@
-import Signin from './signin'
-import Download from './download'
-import Banner from './banner'
-import Links from './links'
+import HomeSignin from './signin'
+import HomeDownload from './download'
+import HomeBanner from './banner'
+import HomeLinks from './links'
 
 export {
-  Signin,
-  Download,
-  Banner,
-  Links,
+  HomeSignin,
+  HomeDownload,
+  HomeBanner,
+  HomeLinks,
 }
