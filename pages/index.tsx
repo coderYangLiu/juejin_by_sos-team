@@ -21,7 +21,7 @@ const Home: FC = () => {
   return (
     <div className="home-wrapper">
       <div>
-        <span>component-layout-home</span>
+        <span>home</span>
         {/* {
           navData?.map(item => (
             <span key={item.id}> {item.title} </span>

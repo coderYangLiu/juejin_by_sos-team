@@ -6,6 +6,7 @@ import { Affix } from '@arco-design/web-react'
 import dynamic from 'next/dynamic'
 import styles from './index.module.less'
 import MarkDown from '@/components/mark-down'
+import { PostAuthor } from '@/components/author'
 
 const PostTOC = dynamic(() => import('@/components/post/toc'))
 export interface IProps {
@@ -25,7 +26,10 @@ const PostId: FC<IProps> = memo(() => {
         <MarkDown value={content1} />
       </div>
       <div className={styles.right}>
+        <PostAuthor/>
+
         PostId : {id}
+
         <Affix offsetTop={80}>
           <div className={styles['article-catalog']}>
             <PostTOC />

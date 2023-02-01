@@ -1,0 +1,40 @@
+@import '@/styles/variables.less';
+
+.author {
+  // .normal-flex( )
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 4px;
+
+  .user {
+    .normal-flex(row, normal, center);
+    padding-bottom: 16px;
+
+    .user-avatar {
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .user-info {
+
+      .user-name{
+        color: #1d2129;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+
+      .user-desc {
+        color: #8a919f;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .operate {
+    .normal-flex(row, space-around, center); 
+  }
+}
