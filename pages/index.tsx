@@ -1,7 +1,9 @@
 import type { FC } from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
 import axios from 'axios'
 
+import { Affix } from '@arco-design/web-react'
 import styles from './index.module.less'
 
 import { AdvertisementItem, EntryItem } from '@/components/home/list'
@@ -9,6 +11,7 @@ import HomeFooter from '@/components/home/footer'
 import { HomeBanner, HomeDownload, HomeLinks, HomeSignin } from '@/components/home/card'
 
 const Home: FC = () => {
+  const [sideFixed, setSideFixed] = useState(false)
   useEffect(() => {
     async function fetchData() {
       const data = await axios.get('https://sos.staraway.love/api/layouts/1?populate=*')
@@ -49,14 +52,17 @@ const Home: FC = () => {
         <div className={styles.right}>
           <HomeSignin />
 
-          <HomeBanner />
-          <HomeBanner />
+          <Affix offsetTop={20} onChange={fixed => setSideFixed(fixed)}>
+            <HomeBanner />
+            <HomeBanner />
+            <HomeDownload />
+          </Affix>
 
-          <HomeDownload />
-
-          <HomeLinks />
-
-          <HomeFooter />
+          {!sideFixed && (<>
+              <HomeLinks />
+              <HomeFooter />
+            </>
+          )}
         </div>
       </div>
     </div>
