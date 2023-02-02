@@ -1,39 +1,9 @@
-.article-catalog {
-  background: #fff;
-  border-radius: 4px;
-  padding: 0;
-  width: 300px;
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
-.catalog-title {
-  font-weight: 500;
-  padding: 1.333rem 0;
-  margin: 0 1.667rem;
-  font-size: 16px;
-  line-height: 2rem;
-  color: #1d2129;
-  border-bottom: 1px solid #e4e6eb;
-}
-
-.catalog-body {
-  position: relative;
-  max-height: 460px;
-  margin: 8px 4px 0 0;
-  overflow: auto;
-}
-
-.catalog-body::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
+@import '@/styles/variables.less';
 
 .catalog-list {
   position: relative;
   line-height: 22px;
-  padding: 0 0 12px;
+  padding: 12px 0;
 }
 
 .item {
@@ -54,24 +24,26 @@
   text-overflow: ellipsis;
 }
 
-.item.active .a-container::before {
-  content: "";
-  position: absolute;
-  top: 4px;
-  left: 0;
-  margin-top: 7px;
-  width: 4px;
-  height: 16px;
-  background: #1e80ff;
-  border-radius: 0 4px 4px 0;
+.item.active {
+  .a-container::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 0;
+    margin-top: 7px;
+    width: 4px;
+    height: 16px;
+    background: #1e80ff;
+    border-radius: 0 4px 4px 0;
+  }
+  .catalog-aTag {
+    color: #1e80ff;
+  }
 }
 
 .catalog-aTag {
-  color: inherit;
   display: inline-block;
   padding: 8px;
-  width: 90%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: inherit;
+  .text-multi-ellipsis(1)
 }

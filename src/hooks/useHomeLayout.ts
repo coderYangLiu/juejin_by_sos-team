@@ -8,7 +8,7 @@ export const useHomeLayout = () => {
   // 后期扩展 主导航栏固定, 侧边栏固定高度变化
 
   useEffect(() => {
-    if (scrollPosition > 300)
+    if (scrollPosition > 1500)
       setSideFixed(true)
     else
       setSideFixed(false)

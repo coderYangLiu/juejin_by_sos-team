@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import styles from './index.module.less'
 
 import { HomeCard, HomeCpns, HomeList } from '@/components/home'
+import Banner from '@/components/banner'
 import { useHomeLayout } from '@/hooks/useHomeLayout'
 
 const Home: FC = () => {
@@ -46,6 +47,14 @@ const Home: FC = () => {
             <HomeList.EntryItem />
             <HomeList.EntryItem />
             <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
             <HomeList.AdvertisementItem />
           </div>
         </div>
@@ -54,8 +63,8 @@ const Home: FC = () => {
           <HomeCard.Signin />
 
           <div className={classNames({ [styles['side-fixed']]: sideFixed })}>
-            <HomeCard.Banner />
-            <HomeCard.Banner />
+            <Banner />
+            <Banner />
 
             {
               !sideFixed && (

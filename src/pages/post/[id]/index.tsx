@@ -7,6 +7,8 @@ import dynamic from 'next/dynamic'
 import styles from './index.module.less'
 import MarkDown from '@/components/mark-down'
 import { PostAuthor, User } from '@/components/author'
+import Banner from '@/components/banner'
+import Related from '@/components/post/related'
 
 const PostTOC = dynamic(() => import('@/components/post/toc'))
 export interface IProps {
@@ -30,9 +32,13 @@ const PostId: FC<IProps> = memo(() => {
         <MarkDown value={content1} />
       </div>
       <div className={styles.right}>
+        PostId : {id}
         <PostAuthor/>
 
-        PostId : {id}
+        <Banner src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/sign-in.d6891e5.png" hasDesc={false} width={300} height={90}/>
+        <Banner hasDesc={false} width={300} height={250}/>
+
+        <Related />
 
         <Affix offsetTop={80}>
           <div className={styles['article-catalog']}>

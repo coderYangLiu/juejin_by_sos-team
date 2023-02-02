@@ -3,6 +3,7 @@ import type { FC, ReactElement } from 'react'
 import classNames from 'classnames'
 import { debounce } from 'lodash-es'
 import styles from './index.module.less'
+import BaseCard from '@/components/common/card'
 
 export interface IProps {
   children?: ReactElement
@@ -33,7 +34,7 @@ const PostTOC: FC<IProps> = memo(() => {
       index = index >= 1 ? index - 1 : 0
 
       setActiveIdx(index)
-      document.querySelector(`a[href='#heading-${index}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      // document.querySelector(`a[href='#heading-${index}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }, 150)
 
     window?.addEventListener('scroll', onScroll)
@@ -65,9 +66,7 @@ const PostTOC: FC<IProps> = memo(() => {
   }, [minLevel])
 
   return (
-    <>
-      <div className={styles['catalog-title']}>目录</div>
-      <div className={styles['catalog-body']}>
+      <BaseCard title="目录">
         <ul className={styles['catalog-list']}>
           {headings.map((item, index) => {
             return (
@@ -86,8 +85,7 @@ const PostTOC: FC<IProps> = memo(() => {
             )
           })}
         </ul>
-      </div>
-    </>
+      </BaseCard>
   )
 })
 
