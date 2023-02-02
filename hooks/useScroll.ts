@@ -17,7 +17,7 @@ export const useScroll = () => {
 
     const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - BOTTOM_OFFSET
     setIsBottom(isBottom)
-  }, 100)
+  }, 100, { leading: true })
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })

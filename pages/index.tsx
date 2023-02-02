@@ -1,17 +1,17 @@
 import type { FC } from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import axios from 'axios'
 
-import { Affix } from '@arco-design/web-react'
+import classNames from 'classnames'
 import styles from './index.module.less'
 
-import { AdvertisementItem, EntryItem } from '@/components/home/list'
-import HomeFooter from '@/components/home/footer'
-import { HomeBanner, HomeDownload, HomeLinks, HomeSignin } from '@/components/home/card'
+import { HomeCard, HomeCpns, HomeList } from '@/components/home'
+import { useHomeLayout } from '@/hooks/useHomeLayout'
 
 const Home: FC = () => {
-  const [sideFixed, setSideFixed] = useState(false)
+  const { sideFixed } = useHomeLayout()
+
   useEffect(() => {
     async function fetchData() {
       const data = await axios.get('https://sos.staraway.love/api/layouts/1?populate=*')
@@ -37,30 +37,32 @@ const Home: FC = () => {
           <div>
             <h2>最新 xx xx</h2>
 
-            <AdvertisementItem />
-            <EntryItem />
-            <EntryItem />
-            <EntryItem />
-            <EntryItem />
-            <EntryItem />
-            <EntryItem />
-            <EntryItem />
-            <AdvertisementItem />
+            <HomeList.AdvertisementItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.EntryItem />
+            <HomeList.AdvertisementItem />
           </div>
         </div>
 
         <div className={styles.right}>
-          <HomeSignin />
+          <HomeCard.Signin />
 
-          <Affix offsetTop={20} onChange={fixed => setSideFixed(fixed)}>
-            <HomeBanner />
-            <HomeBanner />
-            <HomeDownload />
-          </Affix>
+          <div className={classNames({ [styles['side-fixed']]: sideFixed })}>
+            <HomeCard.Banner />
+            <HomeCard.Banner />
+            <HomeCard.Download />
+          </div>
 
-          {!sideFixed && (<>
-              <HomeLinks />
-              <HomeFooter />
+          {!sideFixed && (
+            <>
+              <HomeCard.Links />
+              <HomeCpns.Footer />
             </>
           )}
         </div>

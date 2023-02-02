@@ -8,7 +8,7 @@ const Download = memo(() => {
   return (
     <div className="sidebar-block">
       <Link href='https://juejin.cn/app'>
-        <Card className={styles.card} hoverable>
+        <Card className={styles.card} hoverable bodyStyle={{ padding: '12px' }}>
           <div className={styles.content}>
             <div className={styles.right}>
               <Image
