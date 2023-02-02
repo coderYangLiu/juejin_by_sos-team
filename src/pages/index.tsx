@@ -56,6 +56,13 @@ const Home: FC = () => {
           <div className={classNames({ [styles['side-fixed']]: sideFixed })}>
             <HomeCard.Banner />
             <HomeCard.Banner />
+
+            {
+              !sideFixed && (
+                <HomeCard.Users />
+              )
+            }
+
             <HomeCard.Download />
           </div>
 
