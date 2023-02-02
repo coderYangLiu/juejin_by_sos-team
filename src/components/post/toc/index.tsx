@@ -66,6 +66,7 @@ const PostTOC: FC<IProps> = memo(() => {
   }, [minLevel])
 
   return (
+    <div className="sidebar-block">
       <BaseCard title="目录">
         <ul className={styles['catalog-list']}>
           {headings.map((item, index) => {
@@ -86,6 +87,7 @@ const PostTOC: FC<IProps> = memo(() => {
           })}
         </ul>
       </BaseCard>
+    </div>
   )
 })
 

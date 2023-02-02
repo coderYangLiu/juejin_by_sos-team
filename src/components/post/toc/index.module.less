@@ -1,4 +1,4 @@
-@import '@/styles/variables.less';
+@import "@/styles/variables.less";
 
 .catalog-list {
   position: relative;
@@ -8,10 +8,10 @@
 
 .item {
   position: relative;
-  padding: 0 0 0 1.333rem;
-  margin: 0 0 0.667rem;
+  padding: 0 0 0 15px;
+  margin: 0 0 8px;
   font-size: 14px;
-  color: #1d2129;
+  color: var(--color-neutral-8);
   cursor: pointer;
 }
 
@@ -19,9 +19,7 @@
   display: block;
   position: relative;
   padding: 0 0 0 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  .text-multi-ellipsis(1)
 }
 
 .item.active {
@@ -43,7 +41,13 @@
 
 .catalog-aTag {
   display: inline-block;
-  padding: 8px;
+  margin: 0 8px;
+  padding: 10px;
   color: inherit;
-  .text-multi-ellipsis(1)
+  .text-multi-ellipsis(1);
+
+  &:hover {
+    border-radius: var(--border-radius-medium);
+    background-color: var(--color-neutral-1);
+  }
 }
