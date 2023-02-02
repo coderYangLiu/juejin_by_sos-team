@@ -74,7 +74,7 @@ const PostTOC: FC<IProps> = memo(() => {
               <li
                 key={item.href}
                 onClick={() => transformToId(index)}
-                className={classNames(activeIdx === index ? styles.active : '', styles.item)}
+                className={classNames({ [styles.active]: activeIdx === index }, styles.item)}
                 style={{ paddingLeft: `${(item.level - minLevel) * 16 + 8}px` }}
               >
                 <div className={styles['a-container']}>
