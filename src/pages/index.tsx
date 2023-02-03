@@ -13,7 +13,7 @@ import Banner from '@/components/banner'
 import { useHomeLayout } from '@/hooks/useHomeLayout'
 
 const Home: FC = () => {
-  const { sideFixed } = useHomeLayout()
+  const { sideFixed, isUp } = useHomeLayout(2)
 
   useEffect(() => {
     async function fetchData() {
@@ -75,7 +75,7 @@ const Home: FC = () => {
 
         <div className={styles.right}>
           <HomeCard.Signin />
-          <div className={classNames({ [styles['side-fixed']]: sideFixed })}>
+          <div className={classNames({ [styles['side-fixed']]: sideFixed, [styles.top]: isUp })}>
             <Banner />
             <Banner />
             {!sideFixed && <HomeCard.Users />}
