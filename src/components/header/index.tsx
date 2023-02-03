@@ -6,6 +6,7 @@ import Image from 'next/image'
 import styles from './index.module.less'
 import HeaderNav from './cpns/nav'
 import { useTheme } from '@/hooks/useTheme'
+import { useHomeLayout } from '@/hooks/useHomeLayout'
 
 export interface IProps {
   children?: ReactElement
@@ -13,10 +14,16 @@ export interface IProps {
 
 const Header: FC<IProps> = memo(() => {
   const { setDark } = useTheme()
+  const { isUp } = useHomeLayout()
+  let wrapperClass = styles.wrapper
+  if (isUp)
+    wrapperClass = `${wrapperClass} ${styles['slide-in']}`
+  else
+    wrapperClass = `${wrapperClass} ${styles['slide-out']}`
 
   return (
     // 包裹一层方便布局
-    <div className={styles.wrapper}>
+    <div className={wrapperClass}>
       <header className={styles.header}>
         <Link href="/" className={styles.logo}>
           <Image
