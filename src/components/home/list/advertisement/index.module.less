@@ -7,141 +7,137 @@
   height: 121px;
 
   a {
-      text-decoration: none;
-      background-color: transparent;
+    text-decoration: none;
+    background-color: transparent;
   }
 
   .container {
+    display: flex;
+    align-items: center;
+
+    .user {
       display: flex;
       align-items: center;
 
-      .user {
-          display: flex;
-          align-items: center;
-
-          .userbox {
-              max-width: 162px;
-              font-size: 13px;
-              line-height: 22px;
-              color: #4e5969;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              word-break: break-all;
-              cursor: pointer;
-
-          }
-          .userbox:hover{
-              max-width: 162px;
-              font-size: 13px;
-              line-height: 22px;
-              color: #007fff;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              word-break: break-all;
-              cursor: pointer;
-
-          }
+      .userbox {
+        max-width: 162px;
+        font-size: 13px;
+        line-height: 22px;
+        color: #4e5969;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        cursor: pointer;
       }
-
-      .dividing {
-          width: 1px;
-          height: 14px;
-          background: #e5e6eb;
-          margin: 0 8px;
+      .userbox:hover {
+        max-width: 162px;
+        font-size: 13px;
+        line-height: 22px;
+        color: #007fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        cursor: pointer;
       }
+    }
 
-      .date {
-          line-height: 22px;
-          font-size: 13px;
-          color: #86909c;
-      }
+    .dividing {
+      width: 1px;
+      height: 14px;
+      background: #e5e6eb;
+      margin: 0 8px;
+    }
+
+    .date {
+      line-height: 22px;
+      font-size: 13px;
+      color: #86909c;
+    }
   }
 
   .tag {
-      position: absolute;
-      top: 12px;
-      right: 20px;
-      border: 1px solid #c9cdd4;
-      box-sizing: border-box;
-      border-radius: 2px;
-      line-height: 18px;
-      width: 42px;
-      text-align: center;
-      color: #c9cdd4;
-      font-size: 13px;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    border: 1px solid #c9cdd4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    line-height: 18px;
+    width: 42px;
+    text-align: center;
+    color: #c9cdd4;
+    font-size: 13px;
   }
 
   .main {
-      margin-top: 6px;
-      padding-bottom: 12px;
-      display: flex;
-      border-bottom: 1px solid #e5e6eb;
-      width:660px;
+    margin-top: 6px;
+    padding-bottom: 12px;
+    display: flex;
+    border-bottom: 1px solid #e5e6eb;
+    width: 660px;
+    height: 80px;
+
+    .infobox {
+      flex-grow: 1;
+
+      .title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        color: #1d2129;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+      .title:visited {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        color: #86909c;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+      .description {
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 22px;
+        color: #4e5969;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+      .description:visited {
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 22px;
+        color: #86909c;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+    img {
+      flex: 0 0 auto;
+      width: 120px;
       height: 80px;
-
-      .infobox {
-          flex-grow: 1;
-
-          .title {
-              font-weight: 700;
-              font-size: 16px;
-              line-height: 24px;
-              color: #1d2129;
-              margin-bottom: 8px;
-              display: -webkit-box;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 1;
-          }
-          .title:visited{
-              font-weight: 700;
-              font-size: 16px;
-              line-height: 24px;
-              color: #86909c;
-              margin-bottom: 8px;
-              display: -webkit-box;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 1;
-          }
-          .description {
-              font-weight: 400;
-              font-size: 13px;
-              line-height: 22px;
-              color: #4e5969;
-              display: -webkit-box;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 2;
-          }
-          .description:visited{
-              font-weight: 400;
-              font-size: 13px;
-              line-height: 22px;
-              color: #86909c;
-              display: -webkit-box;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 2;
-          }
-
-      }
-      img {
-          flex: 0 0 auto;
-          width: 120px;
-          height: 80px;
-          margin-left: 24px;
-          border-radius: 2px;
-          position: relative;
-          object-fit: cover;
-          border-style: none;
-      }
-
+      margin-left: 24px;
+      border-radius: 2px;
+      position: relative;
+      object-fit: cover;
+      border-style: none;
+    }
   }
 }

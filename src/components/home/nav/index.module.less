@@ -1,0 +1,54 @@
+.lowerNav {
+  z-index: 9;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg-1);
+  width: 100vw;
+  height: 3.2rem;
+
+  .navContainer {
+    display: flex;
+    flex-direction: row;
+    width: 960px;
+    overflow-x: scroll;
+
+    .navItem {
+      display: flex;
+      align-items: center;
+      height: 3.2rem;
+      margin: 0 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .activeItem {
+      color: rgb(var(--arcoblue-5));
+    }
+  }
+}
+.PopoverContent {
+  min-width: 200px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .tags {
+    margin: 3px 3px;
+    border-radius: 10px;
+  }
+}
+.slide-in {
+  top: 60px;
+  transition: all 0.3s ease-in-out;
+}
+
+.slide-out {
+  top: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (min-width: 1150px) {
+  .navItem:first-child {
+    margin: 0 0.9rem 0 0 !important;
+  }
+}

@@ -40,7 +40,7 @@ const Header: FC<IProps> = memo(() => {
 
         <div className={styles['nav-list']}>
 
-          <HeaderNav active={0}/>
+          <HeaderNav active={0} />
 
           <div className={styles['right-side-nav']}>
             <Button type="primary" onClick={setDark}>

@@ -44,7 +44,7 @@ const HomeFooter: FC<IProps> = memo(() => {
           </Link>
         </li>
         <li className={styles.item}>
-          <Link href="/more_posts">
+          <Link href="/more_posts" rel="">
             更多文章
           </Link>
         </li>

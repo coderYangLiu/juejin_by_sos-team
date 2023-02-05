@@ -1,7 +1,9 @@
 @import "@/styles/variables.less";
 
 .main {
+  margin-top: 130px;
   position: relative;
+  display: flex;
 
   .left {
     background-color: var(--color-bg-2);
@@ -20,9 +22,10 @@
         position: relative;
         font-size: 14px;
         font-weight: 400;
-        margin-left: 12px;
 
         .item {
+          padding: 0 15px;
+
           &.active a {
             color: #007fff;
           }
@@ -46,5 +49,10 @@
         top: 127px;
       }
     }
+  }
+}
+@media (min-width: 945px) {
+  .left {
+    width: 100px;
   }
 }
