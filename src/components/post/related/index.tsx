@@ -14,7 +14,7 @@ const Related: FC<IProps> = memo(() => {
     <div className="sidebar-block">
       <BaseCard title="相关文章">
         <div className={styles['entry-list']}>
-          {Array(6).map((i, index) => {
+          {Array(6).fill(0).map((i, index) => {
             return (
               <Link key={index} href="#" className={styles.item}>
                 <div className={styles.title}>如何开发一个人人爱的组件？</div>

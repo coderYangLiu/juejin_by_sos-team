@@ -4,13 +4,16 @@ import bytemdPluginDFM from '@bytemd/plugin-gfm'
 import bytemdPluginFrontmatter from '@bytemd/plugin-frontmatter'
 import bytemdPluginHighlight from '@bytemd/plugin-highlight-ssr'
 
+import { h } from 'hastscript'
+
 import 'bytemd/dist/index.css'
 import 'highlight.js/styles/default.css'
 
 import type { FC } from 'react'
 
+import type { Root } from 'hast'
 import mdTheme from './themes'
-import type { IViewerContext } from './types'
+import type { IFile } from './types'
 
 export interface IProps {
   value: string
@@ -24,25 +27,15 @@ const MarkDown: FC<IProps> = memo((props) => {
     bytemdPluginFrontmatter(),
     bytemdPluginHighlight(),
     {
-      viewerEffect({ file }: IViewerContext) {
-        const { themes, hls } = mdTheme
+      rehype: (p: any) =>
+        p.use(() => (tree: Root, file: IFile) => {
+          const { themes, hls } = mdTheme
 
-        const theme = file.frontmatter?.theme ?? 'juejin'
-        const highlight = file.frontmatter?.highlight ?? themes[theme].highlight ?? 'default'
-        const $style = document.createElement('style')
-        const $highlight = document.createElement('style')
+          const theme = file.frontmatter?.theme ?? 'juejin'
+          const highlight = file.frontmatter?.highlight ?? themes[theme].highlight ?? 'default'
 
-        $style.innerHTML = themes[theme].style
-        $highlight.innerHTML = hls[highlight]
-
-        document.head.appendChild($style)
-        document.head.appendChild($highlight)
-
-        return () => {
-          $style.remove()
-          $highlight.remove()
-        }
-      },
+          tree.children.unshift(h('style', `${themes[theme].style} ${hls[highlight]}`))
+        }),
     },
   ]
 
