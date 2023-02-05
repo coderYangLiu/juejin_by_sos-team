@@ -38,7 +38,9 @@ const PostId: FC<IProps> = memo(() => {
       <div className={styles.left}>
         <h1 className={styles['article-title']}>23年了，icon 方案该升级了</h1>
 
-        <User />
+        <div>
+          <User />
+        </div>
 
         <MarkDown value={content1} />
 
