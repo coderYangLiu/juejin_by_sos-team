@@ -1,15 +1,16 @@
-import type { FC } from 'react'
 import { useEffect } from 'react'
 
 import axios from 'axios'
-
+import Link from 'next/link'
 import classNames from 'classnames'
 import { Divider } from '@arco-design/web-react'
 
-import Link from 'next/link'
+import type { FC } from 'react'
+
 import styles from './index.module.less'
-import { HomeCard, HomeCpns, HomeList } from '@/components/home'
+
 import Banner from '@/components/banner'
+import { HomeCard, HomeCpns, HomeList } from '@/components/home'
 import { useHomeLayout } from '@/hooks/useHomeLayout'
 
 const Home: FC = () => {
@@ -74,7 +75,7 @@ const Home: FC = () => {
         </div>
 
         <div className={styles.right}>
-          <HomeCard.Signin />
+          <HomeCard.Welcome />
           <div className={classNames({ [styles['side-fixed']]: sideFixed, [styles.top]: isUp })}>
             <Banner />
             <Banner />

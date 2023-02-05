@@ -9,7 +9,7 @@ import CAdvertisementItem from './list/advertisement'
 import CFooter from './footer'
 
 export namespace HomeCard {
-  export const Signin = CWelcome
+  export const Welcome = CWelcome
   export const Download = CDownload
   export const Links = CLinks
   export const Users = CUsers
