@@ -1,16 +1,15 @@
 import { memo } from 'react'
 import type { FC } from 'react'
 
+import type { IProps } from '../base'
 import BaseItem from '../base'
 
-export interface IProps {
-}
-
-const AdvertisementItem: FC<IProps> = memo(() => {
+const AdvertisementItem: FC<IProps> = memo((props) => {
   const tag = (<>广告</>)
+
   return (
     <div className='ad'>
-      <BaseItem tag={tag}/>
+      <BaseItem tag={tag} {...props}/>
     </div>
   )
 })

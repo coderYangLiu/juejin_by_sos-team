@@ -1,12 +1,34 @@
-@import '@/styles/variables.less';
+@import "@/styles/variables.less";
 
 .main {
   position: relative;
-  
+
   .left {
     background-color: var(--color-bg-2);
     width: @homeContentWidth;
     height: auto;
+
+    .list-nav {
+      display: flex;
+      padding: 15px 12px;
+      font-size: 12px;
+      line-height: normal;
+      border-bottom: 1px solid var(--color-neutral-2);
+
+      .nav-list {
+        .normal-flex(row, normal , center);
+        position: relative;
+        font-size: 14px;
+        font-weight: 400;
+        margin-left: 12px;
+
+        .item {
+          &.active a {
+            color: #007fff;
+          }
+        }
+      }
+    }
   }
 
   .right {
@@ -18,7 +40,11 @@
     .side-fixed {
       position: fixed;
       top: 67px;
-      transition: all .2s;
+      transition: all 0.2s;
+
+      &.top {
+        top: 127px;
+      }
     }
   }
 }

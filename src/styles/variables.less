@@ -11,19 +11,19 @@
 // wrapper
 .home-wrapper {
   width: @mainWith;
-  margin: 0 auto;
+  margin: 60px auto 0;
   position: relative;
 }
 
 .post-wrapper {
   width: @postWith;
-  margin: 0 auto;
+  margin: 60px auto 0;
+  padding-top: 20px;
   position: relative;
 }
 
 // flex 布局
-.normal-flex(@direction: row, @justify: flex-start, @align: flex-start) {
-  /* row space-between 用变量*/
+.normal-flex(@direction: row, @justify: flex-start, @align: flex-start) { 
   display: flex;
   flex-direction: @direction;
   justify-content: @justify;
@@ -42,7 +42,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  /* 2 */
   -webkit-line-clamp: @line;
   -webkit-box-orient: vertical;
 }

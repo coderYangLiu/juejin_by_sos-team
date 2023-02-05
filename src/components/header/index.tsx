@@ -3,9 +3,11 @@ import type { FC, ReactElement } from 'react'
 import { Button } from '@arco-design/web-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import classNames from 'classnames'
 import styles from './index.module.less'
 import HeaderNav from './cpns/nav'
 import { useTheme } from '@/hooks/useTheme'
+import { useHomeLayout } from '@/hooks/useHomeLayout'
 
 export interface IProps {
   children?: ReactElement
@@ -13,10 +15,11 @@ export interface IProps {
 
 const Header: FC<IProps> = memo(() => {
   const { setDark } = useTheme()
+  const { isUp } = useHomeLayout()
 
   return (
     // 包裹一层方便布局
-    <div className={styles.wrapper}>
+    <div className={classNames(styles.wrapper, isUp ? styles['slide-in'] : styles['slide-out'])}>
       <header className={styles.header}>
         <Link href="/" className={styles.logo}>
           <Image

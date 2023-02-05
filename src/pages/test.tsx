@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
-import { AdvertisementItem, EntryItem } from '@/components/home/list'
+import { HomeList } from '@/components/home'
 import { useScroll } from '@/hooks/useScroll'
 
 export interface IProps {
@@ -12,18 +12,19 @@ const Test: FC<IProps> = memo(() => {
   return (
     <div>
       {/* 遍历数据 根据类型判断 传Props */}
-      <AdvertisementItem />
-      <EntryItem />
-      <EntryItem />
-      <EntryItem />
-      <EntryItem />
+      <HomeList.AdvertisementItem />
+      <HomeList.EntryItem />
+      <HomeList.EntryItem />
+      <HomeList.EntryItem />
+      <HomeList.EntryItem />
+      <HomeList.EntryItem />
       <h1>{isBottom ? 'bottom' : 'no'}</h1>
       <h1>{scrollPosition}</h1>
       <h1>{changeDistanc}</h1>
-      <AdvertisementItem />
-      <EntryItem />
-      <EntryItem />
-      <AdvertisementItem />
+      <HomeList.AdvertisementItem />
+      <HomeList.EntryItem />
+      <HomeList.EntryItem />
+      <HomeList.AdvertisementItem />
     </div>
   )
 })
