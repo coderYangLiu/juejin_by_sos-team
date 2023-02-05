@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import axios from 'axios'
 import Link from 'next/link'
@@ -7,14 +7,23 @@ import { Divider } from '@arco-design/web-react'
 
 import type { FC } from 'react'
 
+import { useRouter } from 'next/router'
 import styles from './index.module.less'
 
 import Banner from '@/components/banner'
 import { HomeCard, HomeCpns, HomeList } from '@/components/home'
 import { useHomeLayout } from '@/hooks/useHomeLayout'
 
+const navs = [
+  { name: '推荐', href: '/', current: '' },
+  { name: '最新', href: '/?sort=newest', current: 'newest' },
+  { name: '热榜', href: '/?sort=three_days_hottest', current: 'three_days_hottest' },
+]
+
 const Home: FC = () => {
   const { sideFixed, isUp } = useHomeLayout(2)
+  const [currentSort, setCurrentSort] = useState('')
+  const router = useRouter()
 
   useEffect(() => {
     async function fetchData() {
@@ -24,6 +33,14 @@ const Home: FC = () => {
     fetchData()
     console.log('Home')
   }, [])
+
+  useEffect(() => {
+    // sort
+    const { sort = '' } = router.query
+    setCurrentSort(sort as string)
+
+    console.log(router.query)
+  }, [router.query])
 
   return (
     <div className="home-wrapper">
@@ -40,21 +57,35 @@ const Home: FC = () => {
         <div className={styles.left}>
           <nav className={styles['list-nav']}>
             <ul className={styles['nav-list']}>
-              <li className={classNames(styles.active, styles.item)}>
-                <Link href="#">推荐</Link>
-              </li>
-              <Divider type="vertical" style={{ margin: 0 }} />
-              <li className={styles.item}>
-                <Link href="#">最新</Link>
-              </li>
-              <Divider type="vertical" style={{ margin: 0 }} />
-              <li className={styles.item}>
-                <Link href="#">热榜</Link>
-              </li>
+              {navs.map((item, index) => (
+                <li
+                  key={item.current}
+                  className={classNames({ [styles.active]: item.current === currentSort }, styles.item)}
+                >
+                  <Link href={item.href}>{item.name}</Link>
+                  {index !== navs.length - 1 && <Divider type="vertical" />}
+                </li>
+              ))}
             </ul>
           </nav>
 
-          <HomeList.AdvertisementItem />
+          <HomeList.AdvertisementItem
+            image={{
+              src: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8d0156e8d194db19b396be27609ebff~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp',
+            }}
+          />
+          <HomeList.EntryItem
+            image={{
+              src: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8d0156e8d194db19b396be27609ebff~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp',
+            }}
+          />
+          <HomeList.EntryItem />
+          <HomeList.EntryItem />
+          <HomeList.EntryItem
+            image={{
+              src: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8d0156e8d194db19b396be27609ebff~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp',
+            }}
+          />
           <HomeList.EntryItem />
           <HomeList.EntryItem />
           <HomeList.EntryItem />

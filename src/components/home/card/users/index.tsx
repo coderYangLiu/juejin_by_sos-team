@@ -1,9 +1,10 @@
 import { memo } from 'react'
-import type { FC, ReactElement } from 'react'
-import { Card } from '@arco-design/web-react'
-
 import Link from 'next/link'
+import { Card } from '@arco-design/web-react'
+import type { FC, ReactElement } from 'react'
+
 import styles from './index.module.less'
+
 import { User } from '@/components/author'
 
 export interface IProps {

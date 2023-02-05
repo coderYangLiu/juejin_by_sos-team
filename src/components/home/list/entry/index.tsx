@@ -1,16 +1,14 @@
 import { memo } from 'react'
-import type { FC, ReactElement } from 'react'
+import type { FC } from 'react'
+
 import BaseItem from '../base'
+import type { IProps } from '../base'
 import { ActionList } from './cpns'
 
-export interface IProps {
-  children?: ReactElement
-}
-
-const EntryItem: FC<IProps> = memo(() => {
+const EntryItem: FC<IProps> = memo((props) => {
   return (
     <div className=''>
-      <BaseItem actionList={<ActionList />} />
+      <BaseItem actionList={<ActionList />} {...props}/>
     </div>
   )
 })

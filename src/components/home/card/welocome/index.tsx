@@ -1,4 +1,5 @@
-import React from 'react'
+import type { FC } from 'react'
+import { memo } from 'react'
 import styles from './index.module.less'
 
 interface Props {
@@ -23,14 +24,15 @@ const getTimeState = () => {
   return text
 }
 
-const Welcome: React.FC<Props> = (props: Props) => {
-  const { slogan } = props
+const Welcome: FC<Props> = memo((props: Props) => {
+  const { slogan = '点亮在社区的每一天' } = props
+
   return (
     <div className={styles.myCard}>
       <div>
         <div className={styles.left}>
           <span>{getTimeState()}</span>
-          <div>{slogan ?? '点亮在社区的每一天'}</div>
+          <div>{slogan}</div>
         </div>
         <button className={styles.right}>
           <span>去签到</span>
@@ -38,6 +40,7 @@ const Welcome: React.FC<Props> = (props: Props) => {
       </div>
     </div>
   )
-}
+})
+
 Welcome.displayName = 'Welcome'
 export default Welcome
