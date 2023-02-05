@@ -1,4 +1,4 @@
-import CSignin from './card/signin'
+import CWelcome from './card/welocome'
 import CDownload from './card/download'
 import CLinks from './card/links'
 import CUsers from './card/users'
@@ -9,7 +9,7 @@ import CAdvertisementItem from './list/advertisement'
 import CFooter from './footer'
 
 export namespace HomeCard {
-  export const Signin = CSignin
+  export const Signin = CWelcome
   export const Download = CDownload
   export const Links = CLinks
   export const Users = CUsers
