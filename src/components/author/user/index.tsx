@@ -19,9 +19,9 @@ const User: FC<IProps> = memo(() => {
         width={48}
         height={48}
       />
-      <div className="user-info">
-        <div className="user-name">coder xxx xxx</div>
-        <div className="user-desc">coder desc</div>
+      <div className={styles.userInfo}>
+        <div className={styles.name}>coder xxx xxx</div>
+        <div className={styles.desc}>coder desc</div>
       </div>
     </Link>
   )
