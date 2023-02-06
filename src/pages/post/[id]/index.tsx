@@ -45,9 +45,7 @@ const PostId: FC<IProps> = memo(() => {
                 <User/>
 
                 {/* 此处width和height仅为适配组件必须属性，生效样式在less中体现 */}
-                {postCoverUrl
-                ?? <Image src={postCoverUrl} alt={'文章封面'} width={200} height={200} className={styles.postCoverUrl}/>
-                }
+                {postCoverUrl ? <Image src={postCoverUrl} alt={'文章封面'} width={200} height={200} className={styles.postCoverUrl}/> : null}
                 <MarkDown value={content1}/>
 
                 <div className={styles.articleEnd}>
