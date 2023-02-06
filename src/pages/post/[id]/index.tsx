@@ -31,7 +31,25 @@ const PostId: FC<IProps> = memo(() => {
   const columnInfo = '前端react、next.js开发专项'
   const columnImgUrl = 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/95414745836549ce9143753e2a30facd~tplv-k3u1fbpfcp-no-mark:160:160:160:120.awebp'
   const postCoverUrl = 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ed8c2069849744f299b6c551600ac310~tplv-k3u1fbpfcp-zoom-crop-mark:3024:3024:3024:1702.awebp?'
-
+  const relatedPosts = [
+    {
+      id: '1',
+      title: '迟来的2022年终总结',
+      starNum: '15',
+      remarkNum: '18',
+    },
+    {
+      id: '2',
+      title: '23年了，icon 方案该升级了',
+      starNum: '9',
+      remarkNum: '11',
+    }, {
+      id: '3',
+      title: '小镇做题家',
+      starNum: '263',
+      remarkNum: '19',
+    },
+  ]
   const router = useRouter()
   const { id } = router.query
   // const { children } = props
@@ -45,7 +63,7 @@ const PostId: FC<IProps> = memo(() => {
                 <User/>
 
                 {/* 此处width和height仅为适配组件必须属性，生效样式在less中体现 */}
-                {postCoverUrl ? <Image src={postCoverUrl} alt={'文章封面'} width={200} height={200} className={styles.postCoverUrl}/> : null}
+                {postCoverUrl ? <Image src={postCoverUrl} alt={'文章封面'} width={200} height={200} className={styles.postCover}/> : null}
                 <MarkDown value={content1}/>
 
                 <div className={styles.articleEnd}>
@@ -63,7 +81,7 @@ const PostId: FC<IProps> = memo(() => {
                 />
                 <Banner hasDesc={false} width={300} height={250}/>
 
-                <Related/>
+                <Related relatedPosts={relatedPosts}/>
 
                 <Affix offsetTop={80}>
                     <div className={styles['article-catalog']}>
