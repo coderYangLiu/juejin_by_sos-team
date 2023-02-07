@@ -44,9 +44,7 @@ const Home: FC = () => {
 
   return (
     <div className="home-wrapper">
-      <div>
-        <HomeCpns.Nav />
-      </div>
+      <HomeCpns.Nav />
 
       <div className={styles.main}>
         <div className={styles.left}>
