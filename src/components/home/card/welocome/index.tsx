@@ -1,3 +1,4 @@
+import { Card } from '@arco-design/web-react'
 import type { FC } from 'react'
 import { memo } from 'react'
 import styles from './index.module.less'
