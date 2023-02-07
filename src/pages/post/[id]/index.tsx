@@ -1,15 +1,12 @@
 import React, { memo } from 'react'
 import { useRouter } from 'next/router'
 import { Affix } from '@arco-design/web-react'
-
 import type { FC, ReactElement } from 'react'
 import type { GetServerSideProps } from 'next'
-
+import Image from 'next/image'
 import styles from './index.module.less'
-
 import MarkDown from '@/components/mark-down'
 import { PostAuthor, User } from '@/components/author'
-
 import Banner from '@/components/banner'
 import PostCpns from '@/components/post'
 
@@ -28,7 +25,7 @@ const PostId: FC<IProps> = memo(() => {
   const columnInfo = '前端react、next.js开发专项'
   const columnImgUrl
     = 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/95414745836549ce9143753e2a30facd~tplv-k3u1fbpfcp-no-mark:160:160:160:120.awebp'
-
+  const postCoverUrl = 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ed8c2069849744f299b6c551600ac310~tplv-k3u1fbpfcp-zoom-crop-mark:3024:3024:3024:1702.awebp?'
   const router = useRouter()
   const { id } = router.query
   // const { children } = props
@@ -41,6 +38,8 @@ const PostId: FC<IProps> = memo(() => {
         <div>
           <User />
         </div>
+        {/* 此处width和height仅为适配组件必须属性，生效样式在less中体现 */}
+        {postCoverUrl && <Image src={postCoverUrl} alt={'文章封面'} width={200} height={200} className={styles.postCover}/>}
 
         <MarkDown value={content1} />
 
