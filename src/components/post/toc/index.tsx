@@ -23,7 +23,7 @@ const PostTOC: FC<IProps> = memo(() => {
 
   function transformToId(index: number) {
     setActiveIdx(index)
-    document.querySelector(`#heading-${index}`)?.scrollIntoView({ behavior: 'smooth' })
+    document.querySelector(`#heading-${index}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 
   useEffect(() => {
@@ -31,11 +31,13 @@ const PostTOC: FC<IProps> = memo(() => {
       let index = headings.findIndex((item) => {
         return item.top > window.scrollY
       })
-      index = index >= 1 ? index - 1 : 0
+
+      index = index >= 0 ? index - 1 : headings.length - 1
 
       setActiveIdx(index)
-      // document.querySelector(`a[href='#heading-${index}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }, 150)
+
+    setTimeout(onScroll, 150)
 
     window?.addEventListener('scroll', onScroll)
 

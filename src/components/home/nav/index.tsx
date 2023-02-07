@@ -68,22 +68,25 @@ const LowerNav: FC<IProps> = memo((props) => {
   ]
 
   return (
-    <div className={classNames({ [styles.top]: !isUp }, styles.wrapper)}>
-      <div className={styles.lowerNav}>
-        <ul className={styles.navContainer}>
-          {list.map((item) => {
-            return (
-              <li key={item.id} className={styles.navItem}>
-                <Link href={item.url} className={active === item.id ? styles.activeItem : ''}>
-                  {item.name}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-        <a>标签管理</a>
+    <>
+      <div className={classNames({ [styles.top]: !isUp }, styles.wrapper)}>
+        <div className={styles.lowerNav}>
+          <ul className={styles.navContainer}>
+            {list.map((item) => {
+              return (
+                <li key={item.id} className={styles.navItem}>
+                  <Link href={item.url} className={active === item.id ? styles.activeItem : ''}>
+                    {item.name}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+          <a>标签管理</a>
+        </div>
       </div>
-    </div>
+      <div style={{ height: '45px' }}></div>
+    </>
   )
 })
 

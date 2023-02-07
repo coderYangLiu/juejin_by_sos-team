@@ -1,6 +1,10 @@
+import { Provider } from 'react-redux'
+
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+
+import { wrapper } from '@/store'
 
 //
 import '@/styles/globals.less'
@@ -14,13 +18,18 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout
+export default function App({ Component, ...rest }: AppPropsWithLayout) {
+  const { store, props } = wrapper.useWrappedStore(rest)
+
+  const getLayout
+    = Component.getLayout
     ?? (page => (
       <>
         <BaseLayout>{page}</BaseLayout>
       </>
     ))
 
-  return getLayout(<Component {...pageProps} />)
+  return (<Provider store={store}>{
+    getLayout(<Component {...props.pageProps} />)}
+  </Provider>)
 }

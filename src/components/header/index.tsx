@@ -19,37 +19,41 @@ const Header: FC<IProps> = memo(() => {
 
   return (
     // 包裹一层方便布局
-    <div className={classNames(styles.wrapper, isUp ? styles['slide-in'] : styles['slide-out'])}>
-      <header className={styles.header}>
-        <Link href="/" className={styles.logo}>
-          <Image
-            src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg"
-            alt="稀土掘金"
-            width={107}
-            height={22}
-            className={styles['logo-img']}
-          />
-          <Image
-            src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg"
-            alt="稀土掘金"
-            className={styles.mobile}
-            width={31}
-            height={24}
-          />
-        </Link>
+    <>
+      <div className={classNames(styles.wrapper, isUp ? styles['slide-in'] : styles['slide-out'])}>
+        <header className={styles.header}>
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg"
+              alt="稀土掘金"
+              width={107}
+              height={22}
+              className={styles['logo-img']}
+            />
+            <Image
+              src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg"
+              alt="稀土掘金"
+              className={styles.mobile}
+              width={31}
+              height={24}
+            />
+          </Link>
 
-        <div className={styles['nav-list']}>
+          <div className={styles['nav-list']}>
 
-          <HeaderNav active={0}/>
+            <HeaderNav active={0}/>
 
-          <div className={styles['right-side-nav']}>
-            <Button type="primary" onClick={setDark}>
-              change Theme
-            </Button>
+            <div className={styles['right-side-nav']}>
+              <Button type="primary" onClick={setDark}>
+                change Theme
+              </Button>
+            </div>
           </div>
-        </div>
-      </header>
-    </div>
+        </header>
+      </div>
+
+      <div style={{ height: '60px' }}></div>
+    </>
   )
 })
 
