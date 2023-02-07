@@ -3,24 +3,62 @@
 .user {
   .normal-flex(row, normal, center);
 
-  .user-avatar {
-    border-radius: 50%;
-    margin-right: 10px;
-  }
+  .link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 
-  .user-info {
-    .user-name{
-      color: #1d2129;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 24px;
+    .avatar {
+      flex: 0 0 auto;
+      width: 3.8rem;
+      height: 3.8rem;
+      border-radius: 50%;
+      margin-right: 0.5rem;
     }
 
-    .user-desc {
-      color: #8a919f;
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 24px;
+    .userInfo {
+      overflow: hidden;
+
+      .username {
+        font-size: 1.16rem;
+        font-weight: 400;
+        color: #333;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 3px;
+
+        .name {
+          max-width: 128px;
+          display: inline-block;
+          vertical-align: top;
+          overflow: hidden;
+        }
+
+        .rank {
+          display: inline-flex;
+          align-items: center;
+          margin-left: 0.33rem;
+          vertical-align: middle;
+
+          img {
+            width: 35px;
+            height: 16px;
+            border-style: none;
+          }
+        }
+      }
+
+      .position {
+        color: #909090;
+        font-size: 1rem;
+        margin-bottom: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
     }
+
   }
 }
