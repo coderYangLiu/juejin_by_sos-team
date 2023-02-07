@@ -1,8 +1,5 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
-
-import Image from 'next/image'
-import Link from 'next/link'
 import styles from './index.module.less'
 
 export interface IProps {
@@ -10,16 +7,6 @@ export interface IProps {
 }
 
 const User: FC<IProps> = memo(() => {
-  const userNameStyle = {
-    fontSize: '1.16rem',
-    fontWeight: 400,
-    color: '#333',
-  }
-
-  const userDescStyle = {
-    color: '#909090',
-    fontSize: '1rem',
-  }
 
   const data = {
     name: '糯米鸡',
@@ -29,6 +16,8 @@ const User: FC<IProps> = memo(() => {
   }
 
   return (
+    // todo: replace <img> with next/image
+    // https://nextjs.org/docs/messages/no-img-element
     <div className={styles.user}>
       <a href={data.href} className={styles.link}>
         <img
