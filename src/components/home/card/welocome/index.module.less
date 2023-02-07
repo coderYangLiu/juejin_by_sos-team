@@ -1,10 +1,16 @@
+@import '@/styles/variables.less';
+
 .myCard {
   display: block;
   width: 240px;
   margin-bottom: 16px;
   padding: 16px;
-  background-color: #fff;
   box-sizing: border-box;
+  background-color: var(--color-bg-2);
+
+  .content {
+    .normal-flex(row, space-between, center);
+  }
 
 
   div {
@@ -18,7 +24,7 @@
       flex-direction: column;
 
       span {
-        color: #1d2129;
+        color: var(--color-neutral-8);
         font-size: 16px;
         font-weight: 600;
         line-height: 24px;
@@ -26,7 +32,7 @@
       }
 
       div{
-        color: #8a919f;
+        color: var(--color-neutral-6);
         font-size: 12px;
         font-weight: 400;
         line-height: 24px;
@@ -43,12 +49,10 @@
       align-items: center;
       justify-content: center;
       border: 1px solid rgba(30, 128, 255, .3);
-      //background-color: rgba(30, 128, 255, .05);
-      background-color: rgba(30, 128, 255, .05);
       cursor: pointer;
       &:hover{
         transition: background-color,0.7s;
-        background-color: #dbe6fc;
+        //background-color: #dbe6fc;
       }
 
 

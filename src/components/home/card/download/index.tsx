@@ -10,7 +10,7 @@ const Download = memo(() => {
       <Link href='https://juejin.cn/app'>
         <Card className={styles.card} hoverable bodyStyle={{ padding: '12px' }}>
           <div className={styles.content}>
-            <div className={styles.right}>
+            <div>
               <Image
                 src={'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/home.59780ae.png'}
                 alt="download"
@@ -19,7 +19,7 @@ const Download = memo(() => {
               />
             </div>
 
-            <div className={styles.left}>
+            <div className={styles.right}>
               <div className={styles.title}> 下载稀土掘金APP </div>
               <div className={styles.desc}> 一个帮助开发者成长的社区 </div>
             </div>
