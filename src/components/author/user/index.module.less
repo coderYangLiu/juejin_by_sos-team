@@ -1,4 +1,4 @@
-@import '@/styles/variables.less';
+@import "@/styles/variables.less";
 
 .user {
   .normal-flex(row, normal, center);
@@ -23,16 +23,14 @@
         font-size: 1.16rem;
         font-weight: 400;
         color: #333;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
         margin-bottom: 3px;
+
+        .text-multi-ellipsis(1);
 
         .name {
           max-width: 128px;
           display: inline-block;
           vertical-align: top;
-          overflow: hidden;
         }
 
         .rank {
@@ -53,12 +51,9 @@
         color: #909090;
         font-size: 1rem;
         margin-bottom: 3px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
+        .text-multi-ellipsis(1);
       }
-
     }
-
   }
 }
