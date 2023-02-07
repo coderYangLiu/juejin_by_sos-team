@@ -53,6 +53,7 @@ const PostId: FC<IProps> = memo(() => {
       <div className={styles.right}>
         PostId : {id}
         <PostAuthor />
+
         <Banner
           src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/sign-in.d6891e5.png"
           hasDesc={false}
@@ -60,7 +61,9 @@ const PostId: FC<IProps> = memo(() => {
           height={90}
         />
         <Banner hasDesc={false} width={300} height={250} />
+
         <PostCpns.Related />
+
         <Affix offsetTop={80}>
           <div className={styles['article-catalog']}>
             <PostCpns.Toc />

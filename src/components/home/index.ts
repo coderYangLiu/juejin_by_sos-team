@@ -7,6 +7,7 @@ import CEntryItem from './list/entry'
 import CAdvertisementItem from './list/advertisement'
 
 import CFooter from './footer'
+import CNav from './nav'
 
 export namespace HomeCard {
   export const Welcome = CWelcome
@@ -24,6 +25,7 @@ export namespace HomeCpns {
   export const Card = HomeCard
   export const List = HomeList
   export const Footer = CFooter
+  export const Nav = CNav
 }
 
 export default HomeCpns

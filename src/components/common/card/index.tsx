@@ -13,10 +13,8 @@ const BaseCard: FC<IProps> = memo((props) => {
 
   return (
     <>
-      <div className={styles.title}>{title}</div>
-      <div className={styles.body}>
-        {children}
-    </div>
+      {title && <div className={styles.title}>{title}</div>}
+      <div className={styles.body}>{children}</div>
     </>
   )
 })

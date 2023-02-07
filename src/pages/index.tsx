@@ -45,12 +45,7 @@ const Home: FC = () => {
   return (
     <div className="home-wrapper">
       <div>
-        <span>home</span>
-        {/* {
-          navData?.map(item => (
-            <span key={item.id}> {item.title} </span>
-          ))
-        } */}
+        <HomeCpns.Nav />
       </div>
 
       <div className={styles.main}>
