@@ -23,7 +23,7 @@ const PostTOC: FC<IProps> = memo(() => {
 
   function transformToId(index: number) {
     setActiveIdx(index)
-    document.querySelector(`#heading-${index}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    document.querySelector(`#heading-${index}`)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   useEffect(() => {
