@@ -8,5 +8,5 @@ export interface IImage {
 export interface IMate {
   author?: string
   date?: string
-  tags: string[]
+  tags: { name: string; link: string }[]
 }

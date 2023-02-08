@@ -56,6 +56,7 @@ const PostId: FC<IProps> = memo(() => {
         <Banner
           src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/sign-in.d6891e5.png"
           hasDesc={false}
+          hasCover={false}
           width={300}
           height={90}
         />

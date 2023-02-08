@@ -1,10 +1,8 @@
-// components/home-list/base/index.module.less
 @import "@/styles/variables.less";
 
-.entry {
+.base {
   cursor: pointer;
   position: relative;
-  background: var(--color-bg-1);
   padding: 12px 20px 0;
   display: flex;
   flex-direction: column;
@@ -14,6 +12,52 @@
   .meta-container {
     display: flex;
     align-items: center;
+
+    .item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+      &:not(:last-child)::after {
+        position: absolute;
+        right: -10px;
+        display: block;
+        content: " ";
+        height: 50%;
+        width: 1px;
+        border-right: 1px solid var(--color-neutral-6);
+      }
+    }
+
+    .date {
+      color: var(--color-neutral-6);
+    }
+
+    .tags {
+      position: relative;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:not(:last-child)::after {
+        position: absolute;
+        right: -1px;
+        display: block;
+        content: " ";
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background: #4e5969;
+      }
+    }
   }
 
   .tag {

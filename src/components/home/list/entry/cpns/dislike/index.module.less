@@ -1,0 +1,54 @@
+.dislike-menu {
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: 215px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 10%);
+  overflow: hidden;
+
+  .menu-item {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 12px;
+
+    &:hover {
+      background: #f7f8fa;
+    }
+    &:first-child {
+      padding-top: 2px;
+    }
+
+    .menu-icon {
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 100% 100%;
+    }
+
+    .icon-dislike {
+      background-image: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/d51cb68873fed0eefbe66dd4323b5590.svg);
+    }
+    .icon-block-user {
+      flex: 0 0 auto;
+      background-image: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/bc11676ce6e57f9b6a31638cd903e3f7.svg);
+    }
+    .icon-block-tag {
+      background-image: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/ee8bcf878773b9f4ed2fce9b786c455f.svg);
+    }
+    .icon-report {
+      background-image: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/8039766ff47103b8c50b5cb4becf77d4.svg);
+    }
+
+    .menu-text {
+      margin-left: 8px;
+      font-size: 14px;
+      line-height: 24px;
+      color: #252933;
+    }
+  }
+}

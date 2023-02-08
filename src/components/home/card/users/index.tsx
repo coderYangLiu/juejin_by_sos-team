@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import Link from 'next/link'
 import { Card } from '@arco-design/web-react'
+import { IconRight } from '@arco-design/web-react/icon'
 import type { FC, ReactElement } from 'react'
 
 import styles from './index.module.less'
@@ -33,7 +34,7 @@ const Users: FC<IProps> = memo(() => {
         <Link href="#" className={styles.more}>
           <div className={styles.contnet}>
             <span>完整榜单</span>
-            <i> &gt; </i>
+            <IconRight />
           </div>
         </Link>
       </Card>
