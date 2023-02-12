@@ -1,10 +1,10 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
-import { DEFAULT_DATA, DEFAULT_TIMEOUT } from './config'
+import { DEFAULT_DATA } from './config'
 
 import type { IResponse } from './types'
 
-class VAxios {
+export class VAxios {
   instance: AxiosInstance
   constructor(config: AxiosRequestConfig) {
     this.instance = axios.create(config)
@@ -55,10 +55,3 @@ class VAxios {
     return this.request<T>({ ...config, method: 'POST' })
   }
 }
-
-const vAxios = new VAxios({
-  baseURL: 'https://sos.staraway.love/api',
-  timeout: DEFAULT_TIMEOUT,
-})
-
-export default vAxios

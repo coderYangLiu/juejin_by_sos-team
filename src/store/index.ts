@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 
-import layoutReducer, { fetchMainNav } from './layout'
+import mainReducer, { fetchMainNavs } from './main'
+import homeReducer, { fetchArticles, fetchHomeData, fetchHomeNav } from './home'
 
 const makeStore = () =>
   configureStore({
     reducer: {
-      layout: layoutReducer,
+      main: mainReducer,
+      home: homeReducer,
     },
     devTools: true,
   })
@@ -18,5 +20,6 @@ export type AppDispatch = AppStore['dispatch']
 export const wrapper = createWrapper<AppStore>(makeStore)
 
 export {
-  fetchMainNav,
+  fetchMainNavs,
+  fetchArticles, fetchHomeData, fetchHomeNav,
 }

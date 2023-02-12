@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import classNames from 'classnames'
+import { useDispatch, useSelector } from 'react-redux'
+import Link from 'next/link'
 import { Divider } from '@arco-design/web-react'
+import classNames from 'classnames'
 
 import type { FC } from 'react'
 
-import { useDispatch } from 'react-redux'
 import styles from './index.module.less'
 
 import Banner from '@/components/banner'
 import { HomeCard, HomeCpns, HomeList } from '@/components/home'
 import { useHomeLayout } from '@/hooks/useHomeLayout'
-import { getHeaderNav } from '@/service/api'
-
-import { fetchMainNav } from '@/store'
-import type { AppDispatch } from '@/store'
+import { fetchArticles, fetchHomeData, fetchHomeNav, wrapper } from '@/store'
+import type { AppDispatch, AppState } from '@/store'
 
 const navs = [
   { name: '推荐', href: '/', current: '' },
@@ -29,15 +27,12 @@ const Home: FC = () => {
   const router = useRouter()
   const dispatch: AppDispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchMainNav())
+  const { homeData } = useSelector((state: AppState) => ({
+    homeData: state.home.homeData,
+  }))
 
-    async function fetchData() {
-      const data = await getHeaderNav()
-      console.log(data)
-    }
-    fetchData()
-    console.log('Home')
+  useEffect(() => {
+    dispatch(fetchArticles())
   }, [dispatch])
 
   useEffect(() => {
@@ -68,38 +63,6 @@ const Home: FC = () => {
             </ul>
           </nav>
 
-          <HomeList.AdvertisementItem
-            image={{
-              src: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8d0156e8d194db19b396be27609ebff~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp',
-            }}
-          />
-          <HomeList.EntryItem
-            image={{
-              src: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8d0156e8d194db19b396be27609ebff~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp',
-            }}
-          />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem
-            image={{
-              src: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8d0156e8d194db19b396be27609ebff~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp',
-            }}
-          />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
-          <HomeList.EntryItem />
           <HomeList.EntryItem />
           <HomeList.AdvertisementItem />
         </div>
@@ -107,22 +70,29 @@ const Home: FC = () => {
         <div className={styles.right}>
           <HomeCard.Welcome />
           <div className={classNames({ [styles['side-fixed']]: sideFixed, [styles.top]: isUp })}>
-            <Banner />
-            <Banner />
-            {!sideFixed && <HomeCard.Users />}
+            {/* Banners */}
+            { homeData.banners?.map((item: any) => (<Banner key={item.id} {...item} />)) }
             <HomeCard.Download />
+            {/* Users */}
+            {!sideFixed && homeData.authors && <HomeCard.Users />}
           </div>
-          {!sideFixed && (
-            <>
-              <HomeCard.Links />
-              <HomeCpns.Footer />
-            </>
-          )}
+          {/* Links & Footer 不需要固定 */}
+          {!sideFixed && (<> <HomeCard.Links /> <HomeCpns.Footer /> </>)}
         </div>
       </div>
     </div>
   )
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(store => async () => {
+  console.log('Home getServerSideProps')
+  await store.dispatch(fetchHomeNav())
+  await store.dispatch(fetchHomeData())
+
+  return {
+    props: {},
+  }
+})
 
 Home.displayName = 'Home'
 export default Home

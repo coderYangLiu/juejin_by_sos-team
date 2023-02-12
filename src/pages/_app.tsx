@@ -1,10 +1,11 @@
 import { Provider } from 'react-redux'
 
 import type { ReactElement, ReactNode } from 'react'
+import App from 'next/app'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
-import { wrapper } from '@/store'
+import { fetchMainNavs, wrapper } from '@/store'
 
 //
 import '@/styles/globals.less'
@@ -18,7 +19,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-export default function App({ Component, ...rest }: AppPropsWithLayout) {
+function MyApp({ Component, ...rest }: AppPropsWithLayout) {
   const { store, props } = wrapper.useWrappedStore(rest)
 
   const getLayout
@@ -29,7 +30,23 @@ export default function App({ Component, ...rest }: AppPropsWithLayout) {
       </>
     ))
 
-  return (<Provider store={store}>{
-    getLayout(<Component {...props.pageProps} />)}
-  </Provider>)
+  return (
+    <Provider store={store}>
+      {getLayout(<Component {...props.pageProps} />)}
+    </Provider>
+  )
 }
+
+(MyApp as any).getInitialProps = wrapper.getInitialAppProps(store => async (appCtx) => {
+  // You have to do dispatches first, before...
+  await store.dispatch(fetchMainNavs())
+
+  // @see next-redux-wrapper
+  const childrenGip = await App.getInitialProps(appCtx)
+
+  return {
+    pageProps: { ...childrenGip.pageProps },
+  }
+})
+
+export default MyApp

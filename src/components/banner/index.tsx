@@ -8,25 +8,25 @@ import { IconClose } from '@arco-design/web-react/icon'
 import styles from './index.module.less'
 
 export interface IProps {
-  src?: string
+  url?: string
   hasDesc?: boolean
-  hasCover?: boolean
+  closable?: boolean
   width?: number
   height?: number
 }
 
 const Banner: FC<IProps> = memo((props) => {
   const {
-    src = 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4023ed80e2794fb48858b4809b17f139~tplv-k3u1fbpfcp-no-mark:480:400:0:0.awebp',
-    hasCover = true,
+    url = 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4023ed80e2794fb48858b4809b17f139~tplv-k3u1fbpfcp-no-mark:480:400:0:0.awebp',
+    closable,
+    width,
+    height,
     hasDesc = true,
-    width = 240,
-    height = 200,
   } = props
   return (
     <div className={classNames('sidebar-block', styles.banner)}>
       <Link href="#">
-        <Image src={src} alt="banner" className={styles['banner-image']} width={width} height={height} />
+        <Image src={url} alt="banner" className={styles['banner-image']} width={width ?? 240} height={height ?? 200} />
       </Link>
 
       {hasDesc && (
@@ -36,7 +36,7 @@ const Banner: FC<IProps> = memo((props) => {
         </Link>
       )}
 
-      {hasCover && (
+      {closable && (
         <div className={styles.cover}>
           <IconClose className={styles.close} onClick={() => console.log('close')} />
         </div>
