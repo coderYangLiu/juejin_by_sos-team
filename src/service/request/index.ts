@@ -57,7 +57,7 @@ class VAxios {
 }
 
 const vAxios = new VAxios({
-  baseURL: '',
+  baseURL: 'https://sos.staraway.love/api',
   timeout: DEFAULT_TIMEOUT,
 })
 

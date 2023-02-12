@@ -1,10 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
+import { getHeaderNav } from '@/service/api'
 
 export interface LayoutState {
   mainNav: any[]
   homeNav: any[]
 }
+
+export const fetchMainNav = createAsyncThunk('fetchMainNav', async () => await getHeaderNav())
 
 const layoutSlice = createSlice({
   name: 'layout',
@@ -21,12 +24,16 @@ const layoutSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(HYDRATE, (state, action: any) => {
-      return {
-        ...state,
-        ...action.payload.layout,
-      }
-    })
+    builder
+      .addCase(HYDRATE, (state, action: any) => {
+        return {
+          ...state,
+          ...action.payload.layout,
+        }
+      })
+      .addCase(fetchMainNav.fulfilled, (state, action) => {
+        state.mainNav = action.payload
+      })
   },
 })
 

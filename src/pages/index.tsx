@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react'
-
-import axios from 'axios'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import { Divider } from '@arco-design/web-react'
 
 import type { FC } from 'react'
 
-import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
 import styles from './index.module.less'
 
 import Banner from '@/components/banner'
 import { HomeCard, HomeCpns, HomeList } from '@/components/home'
 import { useHomeLayout } from '@/hooks/useHomeLayout'
+import { getHeaderNav } from '@/service/api'
+
+import { fetchMainNav } from '@/store'
+import type { AppDispatch } from '@/store'
 
 const navs = [
   { name: '推荐', href: '/', current: '' },
@@ -24,15 +27,18 @@ const Home: FC = () => {
   const { sideFixed, isUp } = useHomeLayout(2)
   const [currentSort, setCurrentSort] = useState('')
   const router = useRouter()
+  const dispatch: AppDispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(fetchMainNav())
+
     async function fetchData() {
-      const data = await axios.get('https://sos.staraway.love/api/layouts/1?populate=*')
-      console.log(data.data.data.header_navs)
+      const data = await getHeaderNav()
+      console.log(data)
     }
     fetchData()
     console.log('Home')
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     // sort
