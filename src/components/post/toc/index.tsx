@@ -27,12 +27,12 @@ const PostTOC: FC<IProps> = memo(() => {
 
   const tcoRef = useRef<HTMLUListElement>(null)
 
-  function transformToId(index: number) {
+  function transformToId(index: number, offset = 0) {
     document.querySelector(`#heading-${index}`)?.scrollIntoView()
 
     setTimeout(() => {
       if (isUp)
-        window.scrollTo(0, window.scrollY - 60)
+        window.scrollTo(0, window.scrollY - 60 + offset)
     }, 20)
     setActiveIdx(index)
   }
@@ -64,7 +64,7 @@ const PostTOC: FC<IProps> = memo(() => {
     // 首次进入滚动
     const active = router.asPath.split('#heading-')[1]
     if (active)
-      transformToId(parseInt(active))
+      setTimeout(() => transformToId(parseInt(active)), 300)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -102,7 +102,7 @@ const PostTOC: FC<IProps> = memo(() => {
               <li
                 key={item.href}
                 onClick={() => transformToId(index)}
-                className={classNames({ [styles.active]: activeIdx === index }, styles.item)}
+                className={classNames({ [styles.active]: activeIdx === (isUp ? index - 1 : index) }, styles.item)}
                 style={{ paddingLeft: `${(item.level - minLevel) * 16 + 8}px` }}
               >
                 <div className={styles['a-container']}>
