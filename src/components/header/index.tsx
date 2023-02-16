@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import styles from './index.module.less'
 import HeaderNav from './cpns/nav'
 import { useTheme } from '@/hooks/useTheme'
-import { useHomeLayout } from '@/hooks/useHomeLayout'
+import { useLayout } from '@/hooks/useLayout'
 
 export interface IProps {
   children?: ReactElement
@@ -15,7 +15,7 @@ export interface IProps {
 
 const Header: FC<IProps> = memo(() => {
   const { setDark } = useTheme()
-  const { isUp } = useHomeLayout()
+  const { isUp } = useLayout()
 
   return (
     // 包裹一层方便布局

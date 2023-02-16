@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Badge } from '@arco-design/web-react'
 import classNames from 'classnames'
 import styles from './index.module.less'
-import { useHomeLayout } from '@/hooks/useHomeLayout'
+import { useLayout } from '@/hooks/useLayout'
 
 export interface IProps {
   active?: number
@@ -146,7 +146,7 @@ const LowerNav: FC<IProps> = memo((props) => {
     ],
   } = props
 
-  const { isUp } = useHomeLayout()
+  const { isUp } = useLayout()
 
   return (
     <>

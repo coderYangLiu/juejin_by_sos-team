@@ -31,6 +31,16 @@
   top: 20px;
   right: 0;
 
+  .side-fixed {
+    position: fixed;
+    top: 20px;
+    transition: all 0.3s ease-in-out;
+    width: @postSidebarWidth;
+
+    &.top {
+      top: 80px;
+    }
+  }
 }
 
 @media (max-width: 1140px) {

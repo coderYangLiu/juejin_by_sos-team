@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
-import { Affix } from '@arco-design/web-react'
 import type { FC } from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import classNames from 'classnames'
 import styles from './index.module.less'
 import MarkDown from '@/components/mark-down'
 import { PostAuthor, User } from '@/components/author'
@@ -13,6 +13,7 @@ import { fetchPostData, wrapper } from '@/store'
 import type { AppState } from '@/store'
 import { getArticleById } from '@/service/api'
 import type { IArticle } from '@/service/api/types'
+import { useLayout } from '@/hooks/useLayout'
 
 export interface IProps {
   article: IArticle
@@ -28,6 +29,8 @@ const PostId: FC<IProps> = memo((props) => {
 
   const { banners, articles } = postData
 
+  const { sideFixed, isUp } = useLayout()
+
   // 假数据
   const category = '前端'
   const column = 'javaWeb'
@@ -41,49 +44,72 @@ const PostId: FC<IProps> = memo((props) => {
         <h1 className={styles['article-title']}>{title}</h1>
 
         <div>
-          <User author={{ ...author, position: `2022年10月26日 20:13 · 阅读 ${info.view}` }} />
+          <User
+            author={{
+              ...author,
+              position: `2022年10月26日 20:13 · 阅读 ${info.view}`,
+            }}
+          />
         </div>
         {/* 此处width和height仅为适配组件必须属性，生效样式在less中体现 */}
-        {image && <Image src={image} priority alt={'文章封面'} width={200} height={200} className={styles.postCover}/>}
+        {image && (
+          <Image
+            src={image}
+            priority
+            alt={'文章封面'}
+            width={200}
+            height={200}
+            className={styles.postCover}
+          />
+        )}
 
         <MarkDown content={content} />
 
         <div className={styles.articleEnd}>
           {/* 分类 标签 */}
           <PostCpns.PostInfo article_tags={article_tags} category={category} />
-          <PostCpns.Column column={column} columnInfo={columnInfo} columnImgUrl={columnImgUrl} />
+          <PostCpns.Column
+            column={column}
+            columnInfo={columnInfo}
+            columnImgUrl={columnImgUrl}
+          />
           <PostCpns.Extension />
         </div>
       </div>
       <div className={styles.right}>
-        <PostAuthor author={author}/>
+        <PostAuthor author={author} />
 
-        { banners.map(item => <Banner key={item.id} {...item} hasDesc={false} />) }
+        {banners?.map(item => (
+          <Banner key={item.id} {...item} hasDesc={false} />
+        ))}
 
-        <PostCpns.Related articles={articles}/>
+        <PostCpns.Related articles={articles} />
 
-        <Affix offsetTop={80}>
-          <div className={styles['article-catalog']}>
-            <PostCpns.Toc />
-          </div>
-        </Affix>
+        <div className={classNames({
+          [styles['side-fixed']]: sideFixed,
+          [styles.top]: isUp,
+        })}
+        >
+          <PostCpns.Toc />
+        </div>
       </div>
     </div>
   )
 })
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  store => async ({ params }) => {
-    const id = params?.id
-    const article = await getArticleById(parseInt(id as string))
-    await store.dispatch(fetchPostData())
+  store =>
+    async ({ params }) => {
+      const id = params?.id
+      const article = await getArticleById(parseInt(id as string))
+      await store.dispatch(fetchPostData())
 
-    return {
-      props: {
-        article,
-      },
-    }
-  },
+      return {
+        props: {
+          article,
+        },
+      }
+    },
 )
 
 PostId.displayName = 'PostId'

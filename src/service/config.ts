@@ -11,6 +11,6 @@ export enum localApis {
 }
 
 export const local = {
-  baseURL: 'http://localhost:1337/api',
+  baseURL: 'http://juejincms.mrly.top/api',
   timeout: DEFAULT_TIMEOUT,
 }

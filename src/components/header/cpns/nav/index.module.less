@@ -6,9 +6,11 @@
 
   .navItem {
     height: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     margin: 0 1rem;
+    min-width: 28px;
 
     .navText {
       display: flex;
@@ -18,6 +20,24 @@
 
     .activeText {
       color: rgb(var(--primary-6));
+    }
+
+    .tag {
+      position: absolute;
+      top: 5px;
+      left: 7px;
+      z-index: 9;
+      white-space: nowrap;
+      padding: 2px 7px;
+      background-color: #ee502f;
+      border-radius: 50px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 16px;
+      transform: scale(.5);
+      line-height: 18px;
+      color: #fff;
+
     }
   }
 
@@ -31,6 +51,9 @@
 
     .activeText {
       color: var(--color-text-1);
+    }
+    &.noborder {
+      border-bottom: 2px solid transparent;
     }
   }
 }

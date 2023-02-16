@@ -5,7 +5,7 @@ import { debounce } from 'lodash-es'
 import { useRouter } from 'next/router'
 import styles from './index.module.less'
 import BaseCard from '@/components/common/card'
-import { useHomeLayout } from '@/hooks/useHomeLayout'
+import { useLayout } from '@/hooks/useLayout'
 
 export interface IProps {
   children?: ReactElement
@@ -20,7 +20,7 @@ interface ICatalogue {
 
 const PostTOC: FC<IProps> = memo(() => {
   const router = useRouter()
-  const { isUp } = useHomeLayout()
+  const { isUp } = useLayout()
   const [minLevel, setMinLevel] = useState(6)
   const [headings, setHeadings] = useState<ICatalogue[]>([])
   const [activeIdx, setActiveIdx] = useState(0)

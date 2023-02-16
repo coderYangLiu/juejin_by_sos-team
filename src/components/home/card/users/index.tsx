@@ -7,12 +7,14 @@ import type { FC, ReactElement } from 'react'
 import styles from './index.module.less'
 
 import { User } from '@/components/author'
+import type { IAuthor } from '@/service/api/types'
 
 export interface IProps {
   children?: ReactElement
+  authors: IAuthor[]
 }
 
-const Users: FC<IProps> = memo(() => {
+const Users: FC<IProps> = memo(({ authors }) => {
   return (
     <div className='sidebar-block'>
       <Card
@@ -21,15 +23,13 @@ const Users: FC<IProps> = memo(() => {
         style={{ border: 'none' }}
         hoverable
       >
-        <div className={styles.item}>
-          <User />
-        </div>
-        <div className={styles.item}>
-          <User />
-        </div>
-        <div className={styles.item}>
-          <User />
-        </div>
+        {
+          authors.map(item => (
+            <div key={item.id} className={styles.item}>
+              <User author={item} />
+            </div>
+          ))
+        }
 
         <Link href="#" className={styles.more}>
           <div className={styles.contnet}>

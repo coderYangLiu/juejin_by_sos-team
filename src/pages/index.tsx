@@ -11,7 +11,7 @@ import styles from './index.module.less'
 
 import Banner from '@/components/banner'
 import { HomeCard, HomeCpns, HomeList } from '@/components/home'
-import { useHomeLayout } from '@/hooks/useHomeLayout'
+import { useLayout } from '@/hooks/useLayout'
 
 import { fetchArticles, fetchHomeData, fetchHomeNav, wrapper } from '@/store'
 import { closeBannerById } from '@/store/home'
@@ -29,7 +29,7 @@ const navs = [
 ]
 
 const Home: FC = () => {
-  const { sideFixed, isUp } = useHomeLayout(2)
+  const { sideFixed, isUp } = useLayout(2)
   const [currentSort, setCurrentSort] = useState('')
   const router = useRouter()
   const dispatch: AppDispatch = useDispatch()
@@ -104,7 +104,7 @@ const Home: FC = () => {
             ))}
             <HomeCard.Download />
             {/* Users */}
-            {!sideFixed && homeData.authors && <HomeCard.Users />}
+            {!sideFixed && homeData.authors && <HomeCard.Users authors={homeData.authors}/>}
           </div>
           {/* Links & Footer 不需要固定 */}
           {!sideFixed && (<>  <HomeCard.Links /> <HomeCpns.Footer /> </>)}
