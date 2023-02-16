@@ -11,7 +11,7 @@ export interface IProps {
 
 const User: FC<IProps> = memo((props) => {
   const { author } = props
-  const { name, href, avatar, position } = author
+  const { name, href, avatar, position, info } = author
 
   return (
     <div className={styles.user}>
@@ -26,17 +26,26 @@ const User: FC<IProps> = memo((props) => {
 
         <div className={styles.userInfo}>
           <div className={styles.username}>
-            <span className={styles.name}>
-              {name}
-            </span>
+            <span className={styles.name}>{name}</span>
             <span className={styles.rank}>
-              {/* <Image
-                className={styles.img}
-                alt={''}
-                src={avatar}
-                width={48}
-                height={48}
-              /> */}
+              {info.rank && (
+                <Image
+                  className={styles.img}
+                  alt={''}
+                  src={info.rank}
+                  width={48}
+                  height={48}
+                />
+              )}
+              {info.jueyouLevel && (
+                <Image
+                  className={styles.img}
+                  alt={''}
+                  src={info.jueyouLevel}
+                  width={48}
+                  height={48}
+                />
+              )}
             </span>
           </div>
 

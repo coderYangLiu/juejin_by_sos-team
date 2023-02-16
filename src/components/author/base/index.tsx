@@ -1,7 +1,8 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
-import { Button, Card, Divider } from '@arco-design/web-react'
+import { Card, Divider } from '@arco-design/web-react'
 
+import classNames from 'classnames'
 import User from '../user'
 import styles from './index.module.less'
 import type { IAuthor } from '@/service/api/types'
@@ -19,8 +20,12 @@ const BaseAuthor: FC<IProps> = memo((props) => {
       <User author={author}/>
 
       <div className={styles.operate}>
-        <Button>关注</Button>
-        <Button>私信</Button>
+        <button className={styles.btn} >
+          关注
+        </button>
+        <button className={classNames(styles.btn, styles.im)} >
+          私信
+        </button>
       </div>
 
       <Divider style={{ margin: '15px 0' }} />

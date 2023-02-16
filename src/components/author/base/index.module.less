@@ -10,5 +10,22 @@
   .operate {
     .normal-flex(row, space-around, center);
     margin-top: 15px;
+
+    .btn {
+      border: none;
+      .normal-flex(row, center, center);
+      padding: 10px 20px;
+      border-radius: 4px;
+      width: 122px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #1d7dfa;
+      border: 1px solid rgba(30,128,255,0.3);
+
+      &.im {
+        color: #1d7dfa;
+        background: rgba(30,128,255,0.05);
+      }
+    }
   }
 }
