@@ -3,7 +3,7 @@
 const withLess = require('next-with-less')
 
 const nextConfig = withLess({
-  reactStrictMode: true,
+  // reactStrictMode: true,
   transpilePackages: ['@arco-design/web-react'],
 
   lessLoaderOptions: {

@@ -7,13 +7,14 @@
   z-index: 100;
   background-color: var(--color-bg-1);
   transition: top 0.3s ease-in-out;
+  overflow: auto;
 
   &.top {
     top: 0;
   }
 
   .lowerNav {
-    width: 960px;
+    max-width: 960px;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -82,6 +83,16 @@
             color: rgb(var(--arcoblue-5));
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .wrapper {
+    .lowerNav {
+      .subscribed {
+        display: none;
       }
     }
   }

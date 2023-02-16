@@ -1,18 +1,21 @@
 import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
 import BaseAuthor from '../base'
+import type { IAuthor } from '@/service/api/types'
 
 export interface IProps {
   children?: ReactElement
+  author: IAuthor
 }
 
-const PostAuthor: FC<IProps> = memo(() => {
+const PostAuthor: FC<IProps> = memo((props) => {
+  const { author } = props
   return (
     <div className='sidebar-block'>
-      <BaseAuthor>
+      <BaseAuthor author={author}>
         <div className="">
-          <div>获得点赞 1,111</div>
-          <div>文章被阅读 222,222</div>
+          <div>获得点赞 {author.count?.zan}</div>
+          <div>文章被阅读 {author.count?.view}</div>
         </div>
       </BaseAuthor>
     </div>

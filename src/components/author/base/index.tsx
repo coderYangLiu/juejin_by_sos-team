@@ -4,17 +4,19 @@ import { Button, Card, Divider } from '@arco-design/web-react'
 
 import User from '../user'
 import styles from './index.module.less'
+import type { IAuthor } from '@/service/api/types'
 
 export interface IProps {
+  author: IAuthor
   children?: ReactElement
 }
 
 const BaseAuthor: FC<IProps> = memo((props) => {
-  const { children } = props
+  const { children, author } = props
 
   return (
     <Card className={styles.author}>
-      <User />
+      <User author={author}/>
 
       <div className={styles.operate}>
         <Button>关注</Button>

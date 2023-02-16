@@ -4,6 +4,7 @@
   position: relative;
   line-height: 22px;
   padding: 12px 0;
+  max-height: 460px;
 }
 
 .item {
@@ -19,7 +20,7 @@
   display: block;
   position: relative;
   padding: 0 0 0 12px;
-  .text-multi-ellipsis(1)
+  .text-multi-ellipsis(1);
 }
 
 .item.active {
@@ -41,9 +42,10 @@
 
 .catalog-aTag {
   display: inline-block;
-  margin: 0 8px;
-  padding: 10px;
+  margin: 5px 8px;
+  padding: 5px 10px;
   color: inherit;
+  line-height: 22px;
   .text-multi-ellipsis(1);
 
   &:hover {

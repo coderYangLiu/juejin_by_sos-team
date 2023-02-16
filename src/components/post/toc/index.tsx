@@ -1,9 +1,11 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import type { FC, ReactElement } from 'react'
 import classNames from 'classnames'
 import { debounce } from 'lodash-es'
+import { useRouter } from 'next/router'
 import styles from './index.module.less'
 import BaseCard from '@/components/common/card'
+import { useHomeLayout } from '@/hooks/useHomeLayout'
 
 export interface IProps {
   children?: ReactElement
@@ -17,35 +19,25 @@ interface ICatalogue {
 }
 
 const PostTOC: FC<IProps> = memo(() => {
+  const router = useRouter()
+  const { isUp } = useHomeLayout()
   const [minLevel, setMinLevel] = useState(6)
   const [headings, setHeadings] = useState<ICatalogue[]>([])
   const [activeIdx, setActiveIdx] = useState(0)
 
+  const tcoRef = useRef<HTMLUListElement>(null)
+
   function transformToId(index: number) {
+    document.querySelector(`#heading-${index}`)?.scrollIntoView()
+
+    setTimeout(() => {
+      if (isUp)
+        window.scrollTo(0, window.scrollY - 60)
+    }, 20)
     setActiveIdx(index)
-    document.querySelector(`#heading-${index}`)?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  useEffect(() => {
-    const onScroll = debounce(() => {
-      let index = headings.findIndex((item) => {
-        return item.top > window.scrollY
-      })
-
-      index = index >= 0 ? index - 1 : headings.length - 1
-
-      setActiveIdx(index)
-    }, 150)
-
-    setTimeout(onScroll, 150)
-
-    window?.addEventListener('scroll', onScroll)
-
-    return () => {
-      window?.removeEventListener('scroll', onScroll)
-    }
-  })
-
+  // 获取目录
   useEffect(() => {
     const markDownEl = document.querySelector('.markdown-body')
 
@@ -65,12 +57,46 @@ const PostTOC: FC<IProps> = memo(() => {
     })
 
     setHeadings(catalogue)
-  }, [minLevel])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router])
+
+  useEffect(() => {
+    // 首次进入滚动
+    const active = router.asPath.split('#heading-')[1]
+    if (active)
+      transformToId(parseInt(active))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    const onScroll = debounce(() => {
+      let index = headings.findIndex((item) => {
+        return item.top > window.scrollY
+      })
+
+      if (index > -1 && index <= headings.length - 1) {
+        if (index !== 0)
+          index -= 1
+      }
+      else {
+        index = headings.length - 1
+      }
+      setActiveIdx(index)
+
+      index > 0 && tcoRef.current?.querySelector(`[href='#heading-${activeIdx}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 150)
+
+    window?.addEventListener('scroll', onScroll)
+
+    return () => {
+      window?.removeEventListener('scroll', onScroll)
+    }
+  })
 
   return (
     <div className="sidebar-block">
       <BaseCard title="目录">
-        <ul className={styles['catalog-list']}>
+        <ul ref={tcoRef} className={styles['catalog-list']}>
           {headings.map((item, index) => {
             return (
               <li

@@ -16,11 +16,11 @@ import mdTheme from './themes'
 import type { IFile } from './types'
 
 export interface IProps {
-  value: string
+  content: string
 }
 
 const MarkDown: FC<IProps> = memo((props) => {
-  const { value } = props
+  const { content } = props
 
   const plugins = [
     bytemdPluginDFM(),
@@ -40,9 +40,7 @@ const MarkDown: FC<IProps> = memo((props) => {
   ]
 
   return (
-    <>
-      <Viewer value={value} plugins={plugins} />
-    </>
+    <Viewer value={content} plugins={plugins} />
   )
 })
 

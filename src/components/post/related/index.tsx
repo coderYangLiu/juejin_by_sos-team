@@ -4,22 +4,24 @@ import Link from 'next/link'
 
 import styles from './index.module.less'
 import BaseCard from '@/components/common/card'
+import type { IArticle } from '@/service/api/types'
 
 export interface IProps {
   children?: ReactElement
+  articles: IArticle[]
 }
 
-const Related: FC<IProps> = memo(() => {
+const Related: FC<IProps> = memo(({ articles }) => {
   return (
     <div className="sidebar-block">
       <BaseCard title="相关文章">
         <div className={styles['entry-list']}>
-          {Array(6).fill(0).map((i, index) => {
+          {articles.map((item) => {
             return (
-              <Link key={index} href="#" className={styles.item}>
-                <div className={styles.title}>如何开发一个人人爱的组件？</div>
+              <Link key={item.id} href="#" className={styles.item}>
+                <div className={styles.title}>{item.title}</div>
                 <div className={styles.desc}>
-                  <span>xxx点赞</span> · <span>xxx评论</span>
+                  <span>{item?.info?.like}点赞</span> · <span>{item?.info?.comment}评论</span>
                 </div>
               </Link>
             )

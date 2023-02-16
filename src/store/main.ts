@@ -1,18 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 import { getMainNavs } from '@/service/api'
+import type { IMainNav } from '@/service/api/types'
 
-export interface LayoutState {
-  mainNav: any[]
+export interface MainState {
+  mainNav: IMainNav[]
 }
 
 export const fetchMainNavs = createAsyncThunk('fetchMainNavs', async () => await getMainNavs())
 
-const layoutSlice = createSlice({
-  name: 'layout',
+const mainSlice = createSlice({
+  name: 'main',
   initialState: {
     mainNav: [],
-  } as LayoutState,
+  } as MainState,
 
   reducers: {
     setMainNav(state, action) { state.mainNav = action.payload },
@@ -25,5 +26,5 @@ const layoutSlice = createSlice({
   },
 })
 
-export const { setMainNav } = layoutSlice.actions
-export default layoutSlice.reducer
+export const { setMainNav } = mainSlice.actions
+export default mainSlice.reducer

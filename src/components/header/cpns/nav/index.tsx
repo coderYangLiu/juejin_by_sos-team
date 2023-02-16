@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
+import classNames from 'classnames'
 import styles from './index.module.less'
 import type { AppState } from '@/store'
 
@@ -24,51 +25,35 @@ const HeaderNav: FC<IProps> = memo((props) => {
 
   const router = useRouter()
 
-  console.log(router.asPath)
+  const NavItem
+    = <ul className={styles.navContainer}>
+      {
+        mainNav.map(item => (
+          <li className={styles.navItem} key={item.id}>
+            <Link href={item.path} className={ item.path === router.asPath ? styles.activeText : styles.navText } >
+              {item.types === 'img' ? <Image src={item.name} alt="" width={115} height={40} /> : item.name}
+            </Link>
+          </li>
+        ))
+      }
+    </ul>
 
   return (
     <>
       <div className={styles.listContainer}>
         {/* <NavList /> */}
-
-        <ul className={styles.navContainer}>
-          {
-            mainNav.map(item => (
-              <li className={styles.navItem} key={item.id}>
-                <Link href={item.path} className={ item.path === router.asPath ? styles.activeText : styles.navText } >
-                  {item.types === 'img' ? <Image src={item.name} alt="" width={115} height={40} /> : item.name}
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
+        {NavItem}
       </div>
 
       <Trigger
         popupVisible={listOpen}
         trigger="click"
-        popup={() => (
-          <ul className={styles.navContainer}>
-            {
-              mainNav.map(item => (
-                <li className={styles.navItem} key={item.id}>
-                  <Link href={item.path} className={ item.path === router.asPath ? styles.activeText : styles.navText } >
-                    {item.types === 'img' ? <Image src={item.name} alt="" width={115} height={40} /> : item.name}
-                  </Link>
-                </li>
-              ))
-            }
-          </ul>
-        )}
+        popup={() => (NavItem)}
         onClickOutside={() => setListOpen(false)}
       >
         <div className={styles.navPhone} onClick={() => setListOpen(!listOpen)}>
           <span>{list[active]}</span>
-          <span
-            className={`${styles.navArrow} ${
-              listOpen ? styles.navArrowReversed : ''
-            }`}
-          ></span>
+          <span className={ classNames(styles.navArrow, { [styles.navArrowReversed]: listOpen }) } />
         </div>
       </Trigger>
     </>

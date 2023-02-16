@@ -1,16 +1,18 @@
 import React, { memo } from 'react'
 import type { FC } from 'react'
 
+import Link from 'next/link'
 import styles from './index.module.less'
+import type { IArticletag } from '@/service/api/types'
 
 export interface IProps {
-  labels: string[]
-
   category: string
+
+  article_tags?: IArticletag[]
 }
 
 const PostInfo: FC<IProps> = memo((props) => {
-  const { labels, category } = props
+  const { category, article_tags } = props
 
   return (
     <div className={styles.tagListBox}>
@@ -23,10 +25,10 @@ const PostInfo: FC<IProps> = memo((props) => {
       <div className={styles.tagList}>
         <div className={styles.tagListTitle}>标签:</div>
         <div className={styles.tagListContainer}>
-          {labels.map(item => (
-            <a key={item} href={'/baidu.com'} target={'_blank'} rel="noreferrer">
-              {item}
-            </a>
+          {article_tags?.map(item => (
+            <Link key={item.id} href={item.path ?? `/tag/${item.name}`} target={'_blank'} rel="noreferrer">
+              {item.name}
+            </Link>
           ))}
         </div>
       </div>

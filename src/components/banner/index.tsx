@@ -13,6 +13,7 @@ export interface IProps {
   closable?: boolean
   width?: number
   height?: number
+  handleClose?: () => void
 }
 
 const Banner: FC<IProps> = memo((props) => {
@@ -22,7 +23,9 @@ const Banner: FC<IProps> = memo((props) => {
     width,
     height,
     hasDesc = true,
+    handleClose,
   } = props
+
   return (
     <div className={classNames('sidebar-block', styles.banner)}>
       <Link href="#">
@@ -38,7 +41,7 @@ const Banner: FC<IProps> = memo((props) => {
 
       {closable && (
         <div className={styles.cover}>
-          <IconClose className={styles.close} onClick={() => console.log('close')} />
+          <IconClose className={styles.close} onClick={handleClose} />
         </div>
       )}
     </div>

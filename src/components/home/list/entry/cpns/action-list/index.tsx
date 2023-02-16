@@ -1,26 +1,24 @@
 import { memo } from 'react'
-import type { FC, ReactElement } from 'react'
+import type { FC } from 'react'
 import styles from './index.module.less'
 import MyIcon from '@/components/common/icon'
+import type { IArticleInfo } from '@/service/api/types'
 
-export interface IProps {
-  children?: ReactElement
-}
-
-const ActionList: FC<IProps> = memo(() => {
+const ActionList: FC<IArticleInfo> = memo((props) => {
+  const { view, comment, like } = props
   return (
     <ul className={styles['action-list']}>
       <li className={styles.item}>
         <MyIcon type="icon-chakan1" className={styles.icon}/>
-        123
+        {view}
       </li>
       <li className={styles.item}>
         <MyIcon type="icon-dianzan1" className={styles.icon}/>
-        234
+        {like}
       </li>
       <li className={styles.item}>
         <MyIcon type="icon-icon-pinglun" className={styles.icon} style={{ transform: 'rotateY(180deg)', fontSize: 16 }}/>
-        345
+        {comment}
       </li>
     </ul>
   )

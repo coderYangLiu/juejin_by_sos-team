@@ -3,44 +3,40 @@ import type { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './index.module.less'
+import type { IAuthor } from '@/service/api/types'
 
 export interface IProps {
-  name?: string
-  href?: string
-  rank?: string
-  position?: string
+  author: IAuthor
 }
 
 const User: FC<IProps> = memo((props) => {
-  const {
-    name = '糯米鸡',
-    href = 'https://juejin.cn/user/2506542244708072',
-    rank = '5',
-    position = '公众号: 码猿技术专栏 @ 蚂蚁金服',
-  } = props
+  const { author } = props
+  const { name, href, avatar, position } = author
 
   return (
     <div className={styles.user}>
       <Link href={href} className={styles.link}>
         <Image
           className={styles.avatar}
-          alt={name}
-          src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
+          alt={''}
+          src={avatar}
           width={48}
           height={48}
         />
 
         <div className={styles.userInfo}>
           <div className={styles.username}>
-            <span className={styles.name}>{name}</span>
+            <span className={styles.name}>
+              {name}
+            </span>
             <span className={styles.rank}>
-              <Image
+              {/* <Image
                 className={styles.img}
-                alt={`lv-${rank}`}
-                src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/lv-5.d08789d.png"
+                alt={''}
+                src={avatar}
                 width={48}
                 height={48}
-              />
+              /> */}
             </span>
           </div>
 

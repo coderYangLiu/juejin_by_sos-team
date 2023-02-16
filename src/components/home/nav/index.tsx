@@ -176,7 +176,7 @@ const LowerNav: FC<IProps> = memo((props) => {
             })}
           </ul>
 
-          <Link href="/subscribe/subscribed" className={styles.navItem}>
+          <Link href="/subscribe/subscribed" className={classNames(styles.subscribed, styles.navItem)}>
             标签管理
           </Link>
         </div>
