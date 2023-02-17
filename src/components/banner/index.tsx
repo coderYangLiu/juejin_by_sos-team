@@ -29,7 +29,7 @@ const Banner: FC<IProps> = memo((props) => {
   return (
     <div className={classNames('sidebar-block', styles.banner)}>
       <Link href="#">
-        <Image src={url} alt="banner" className={styles['banner-image']} width={width ?? 240} height={height ?? 200} />
+        <Image src={url} alt="banner" priority className={styles['banner-image']} width={width ?? 240} height={height ?? 200} />
       </Link>
 
       {hasDesc && (

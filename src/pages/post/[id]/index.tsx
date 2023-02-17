@@ -24,7 +24,6 @@ export interface IProps {
 const PostId: FC<IProps> = memo((props) => {
   const { article } = props
   const { title, image, content, article_tags, author, info, createdAt } = article
-  console.log(article)
 
   const { postData } = useSelector((store: AppState) => ({
     postData: store.post.postData,
