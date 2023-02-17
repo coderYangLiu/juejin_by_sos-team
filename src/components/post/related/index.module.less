@@ -1,3 +1,5 @@
+@import "@/styles/variables.less";
+
 .entry-list {
   padding: 8px 0 15px;
   .item {
@@ -13,6 +15,7 @@
     .title {
       font-size: 14px;
       font-weight: 400;
+      .text-multi-ellipsis();
 
       &:hover {
         color: rgb(var(--arcoblue-5));

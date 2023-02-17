@@ -23,7 +23,8 @@ export interface IProps {
 
 const PostId: FC<IProps> = memo((props) => {
   const { article } = props
-  const { title, image, content, article_tags, author, info } = article
+  const { title, image, content, article_tags, author, info, createdAt } = article
+  console.log(article)
 
   const { postData } = useSelector((store: AppState) => ({
     postData: store.post.postData,
@@ -53,7 +54,7 @@ const PostId: FC<IProps> = memo((props) => {
           <User
             author={{
               ...author,
-              position: `2022年10月26日 20:13 · 阅读 ${formatNumber(info.view)}`,
+              position: `${new Date(createdAt).toLocaleString()} · 阅读 ${formatNumber(info.view)}`,
             }}
           />
         </div>
