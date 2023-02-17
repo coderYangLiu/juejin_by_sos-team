@@ -26,12 +26,13 @@ const getTimeState = () => {
 
 const Welcome: FC<Props> = memo((props: Props) => {
   const { slogan = '点亮在社区的每一天' } = props
+  const showStrimg = getTimeState()
 
   return (
     <div className={styles.myCard}>
       <div>
         <div className={styles.left}>
-          <span>{getTimeState()}</span>
+          <span>{showStrimg}</span>
           <div>{slogan}</div>
         </div>
         <button className={styles.right}>

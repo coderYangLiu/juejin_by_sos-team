@@ -6,8 +6,6 @@ export const useTheme = () => {
   useEffect(() => {
     const mode = window.localStorage.getItem('themme') ?? 'light'
 
-    console.log(mode)
-
     if (isDark)
       (mode === 'light') && setDark()
     else
