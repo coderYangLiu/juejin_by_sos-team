@@ -41,14 +41,12 @@ const Home: FC = () => {
   }))
 
   useEffect(() => {
-    dispatch(fetchArticles({}))
-  }, [dispatch])
-
-  useEffect(() => {
     // sort
     const sort = (router.query.sort ?? '') as string
     setCurrentSort(sort)
-  }, [router.query])
+
+    dispatch(fetchArticles({}))
+  }, [router.query, dispatch])
 
   const getHomeList = (item: IArticle) => {
     if (item.type === 'article')
