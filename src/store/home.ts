@@ -38,7 +38,11 @@ const homeSlice = createSlice({
       .addCase(HYDRATE, (state, action: any) => ({ ...state, ...action.payload.home }))
       .addCase(fetchHomeData.fulfilled, (state, action) => { state.homeData = action.payload })
       .addCase(fetchHomeNav.fulfilled, (state, action) => { state.homeNav = action.payload })
-      .addCase(fetchArticles.fulfilled, (state, action) => { state.articles = action.payload })
+      .addCase(fetchArticles.fulfilled, (state, action) => {
+        do
+          state.articles = state.articles.concat(action.payload)
+        while (state.articles.length < 20)
+      })
   },
 })
 
