@@ -62,7 +62,6 @@ const PostTOC: FC<IProps> = memo(() => {
 
   useEffect(() => {
     // 首次进入滚动
-    console.log('首次进入滚动')
     const active = router.asPath.split('#heading-')[1]
     if (active)
       setTimeout(() => transformToId(parseInt(active)), 300)
@@ -82,7 +81,6 @@ const PostTOC: FC<IProps> = memo(() => {
       else {
         index = headings.length - 1
       }
-      console.log('onScroll', index)
       setActiveIdx(index)
 
       index > 0 && sideFixed && tcoRef.current?.querySelector(`[href='#heading-${activeIdx}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })

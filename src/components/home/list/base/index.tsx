@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import styles from './index.module.less'
 
 import type { IArticle } from '@/service/api/types'
+import formatTime from '@/utiles/format'
 
 export type IProps = {
   tag?: ReactElement // 广告
@@ -33,7 +34,7 @@ const BaseItem: FC<IProps> = memo((props) => {
         {/* 作者 */}
         {author && <div className={styles.item}><Link href=""> {author.name} </Link></div> }
         {/* 时间 */}
-        {createdAt && <div className={classNames([styles.item], [styles.date])}>  {createdAt.slice(0, 4)}  </div> }
+        {createdAt && <div className={classNames([styles.item], [styles.date])}>  {formatTime(new Date(createdAt).getTime())}  </div> }
         {/* 标签 */}
         {article_tags && (
           <div className={styles.item}>

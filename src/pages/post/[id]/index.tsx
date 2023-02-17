@@ -15,6 +15,7 @@ import type { AppState } from '@/store'
 import { getArticleById } from '@/service/api'
 import type { IArticle } from '@/service/api/types'
 import { useLayout } from '@/hooks/useLayout'
+import { formatNumber } from '@/utiles/format'
 
 export interface IProps {
   article: IArticle
@@ -52,7 +53,7 @@ const PostId: FC<IProps> = memo((props) => {
           <User
             author={{
               ...author,
-              position: `2022年10月26日 20:13 · 阅读 ${info.view}`,
+              position: `2022年10月26日 20:13 · 阅读 ${formatNumber(info.view)}`,
             }}
           />
         </div>

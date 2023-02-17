@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import styles from './index.module.less'
 import MyIcon from '@/components/common/icon'
 import type { IArticleInfo } from '@/service/api/types'
+import { formatNumber } from '@/utiles/format'
 
 const ActionList: FC<IArticleInfo> = memo((props) => {
   const { view, comment, like } = props
@@ -10,15 +11,15 @@ const ActionList: FC<IArticleInfo> = memo((props) => {
     <ul className={styles['action-list']}>
       <li className={styles.item}>
         <MyIcon type="icon-chakan1" className={styles.icon}/>
-        {view}
+        {formatNumber(view)}
       </li>
       <li className={styles.item}>
         <MyIcon type="icon-dianzan1" className={styles.icon}/>
-        {like}
+        {formatNumber(like)}
       </li>
       <li className={styles.item}>
         <MyIcon type="icon-icon-pinglun" className={styles.icon} style={{ transform: 'rotateY(180deg)', fontSize: 16 }}/>
-        {comment}
+        {formatNumber(comment)}
       </li>
     </ul>
   )
