@@ -20,7 +20,7 @@ interface ICatalogue {
 
 const PostTOC: FC<IProps> = memo(() => {
   const router = useRouter()
-  const { isUp } = useLayout()
+  const { isUp, sideFixed } = useLayout()
   const [minLevel, setMinLevel] = useState(6)
   const [headings, setHeadings] = useState<ICatalogue[]>([])
   const [activeIdx, setActiveIdx] = useState(0)
@@ -62,6 +62,7 @@ const PostTOC: FC<IProps> = memo(() => {
 
   useEffect(() => {
     // 首次进入滚动
+    console.log('首次进入滚动')
     const active = router.asPath.split('#heading-')[1]
     if (active)
       setTimeout(() => transformToId(parseInt(active)), 300)
@@ -81,9 +82,10 @@ const PostTOC: FC<IProps> = memo(() => {
       else {
         index = headings.length - 1
       }
+      console.log('onScroll', index)
       setActiveIdx(index)
 
-      index > 0 && tcoRef.current?.querySelector(`[href='#heading-${activeIdx}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      index > 0 && sideFixed && tcoRef.current?.querySelector(`[href='#heading-${activeIdx}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }, 150)
 
     window?.addEventListener('scroll', onScroll)

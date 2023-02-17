@@ -48,8 +48,6 @@ const Home: FC = () => {
     // sort
     const sort = (router.query.sort ?? '') as string
     setCurrentSort(sort)
-
-    console.log(router.query)
   }, [router.query])
 
   const getHomeList = (item: IArticle) => {
