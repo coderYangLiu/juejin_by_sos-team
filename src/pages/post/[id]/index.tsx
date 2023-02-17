@@ -29,6 +29,8 @@ const PostId: FC<IProps> = memo((props) => {
     postData: store.post.postData,
   }))
 
+  const showDate = new Date(createdAt).toLocaleString()
+
   const { banners, articles } = postData
 
   const { sideFixed, isUp } = useLayout()
@@ -53,7 +55,7 @@ const PostId: FC<IProps> = memo((props) => {
           <User
             author={{
               ...author,
-              position: `${new Date(createdAt).toLocaleString()} · 阅读 ${formatNumber(info.view)}`,
+              position: `${showDate} · 阅读 ${formatNumber(info.view)}`,
             }}
           />
         </div>

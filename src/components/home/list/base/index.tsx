@@ -28,13 +28,15 @@ const BaseItem: FC<IProps> = memo((props) => {
     createdAt,
   } = props
 
+  const showDateString = formatTime(new Date(createdAt).getTime())
+
   return (
     <Link href={{ pathname: `/post/${id}` }} target="_blank" className={styles.base}>
       <div className={styles['meta-container']}>
         {/* 作者 */}
         {author && <div className={styles.item}><Link href=""> {author.name} </Link></div> }
         {/* 时间 */}
-        {createdAt && <div className={classNames([styles.item], [styles.date])}>  {formatTime(new Date(createdAt).getTime())}  </div> }
+        {createdAt && <div className={classNames([styles.item], [styles.date])}>  {showDateString}  </div> }
         {/* 标签 */}
         {article_tags && (
           <div className={styles.item}>
