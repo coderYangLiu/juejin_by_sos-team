@@ -26,6 +26,7 @@
   align-items: center;
 
   .logo {
+    padding-left: 10px;
     .mobile {
       display: none;
       width: 31px;
@@ -40,5 +41,26 @@
     position: relative;
     height: 100%;
     margin: 0;
+  }
+}
+
+body[arco-theme='dark'] {
+  .header {
+    .logo {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    .logo {
+      .logo-img {
+        display: none;
+      }
+      .mobile {
+        display: block;
+      }
+    }
   }
 }
