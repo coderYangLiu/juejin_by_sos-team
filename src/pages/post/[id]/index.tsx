@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
+import Head from 'next/head'
 import styles from './index.module.less'
 import MarkDown from '@/components/mark-down'
 import { PostAuthor, User } from '@/components/author'
@@ -40,6 +41,10 @@ const PostId: FC<IProps> = memo((props) => {
 
   return (
     <div className="post-wrapper">
+      <Head>
+        <title>{title}</title>
+      </Head>
+
       <div className={styles.left}>
         <h1 className={styles['article-title']}>{title}</h1>
 

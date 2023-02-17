@@ -7,6 +7,7 @@ import classNames from 'classnames'
 
 import type { FC } from 'react'
 
+import Head from 'next/head'
 import styles from './index.module.less'
 
 import Banner from '@/components/banner'
@@ -60,6 +61,10 @@ const Home: FC = () => {
 
   return (
     <div className="home-wrapper">
+      <Head>
+        <title>稀土掘金</title>
+      </Head>
+
       <HomeCpns.Nav />
 
       <div className={styles.main}>

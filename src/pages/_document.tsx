@@ -3,7 +3,6 @@ import { Head, Html, Main, NextScript } from 'next/document'
 export default function Document() {
   return (
     <Html lang="en">
-      <title>稀土掘金</title>
       <Head>
         <meta
           data-n-head="ssr"
@@ -17,7 +16,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-      </body>
+      </body>s
     </Html>
   )
 }
