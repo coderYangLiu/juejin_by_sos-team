@@ -6,7 +6,7 @@
   top: 60px;
   z-index: 100;
   background-color: var(--color-bg-1);
-  transition: top 0.3s ease-in-out;
+  overflow: auto;
 
   &.top {
     top: 0;
@@ -19,7 +19,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: auto;
 
     .navContainer {
       display: flex;
@@ -56,9 +55,8 @@
       }
 
       .subNav {
-        position: absolute;
-        top: 45px;
-        left: 0;
+        position: fixed;
+        margin-top: 251px;
         width: 360px;
 
         display: none; // flex
