@@ -111,6 +111,8 @@ const PostId: FC<IProps> = memo((props) => {
           <PostCpns.Toc />
         </div>
       </div>
+
+      <PostCpns.TabBar {...info} />
     </div>
   )
 })
