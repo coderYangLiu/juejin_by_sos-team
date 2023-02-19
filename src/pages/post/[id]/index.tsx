@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import type { FC } from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
@@ -23,17 +23,16 @@ export interface IProps {
 
 const PostId: FC<IProps> = memo((props) => {
   const { article } = props
-  const { title, image, content, article_tags, author, info, createdAt } = article
-
+  const { title, image, content, article_tags, author, info, createdAt }
+    = article
   const { postData } = useSelector((store: AppState) => ({
     postData: store.post.postData,
   }))
+  const { banners, articles } = postData
+  const { sideFixed, isUp } = useLayout()
 
   const showDate = new Date(createdAt).toLocaleString()
-
-  const { banners, articles } = postData
-
-  const { sideFixed, isUp } = useLayout()
+  const [sideStatus, setSideStatus] = useState(true)
 
   // 假数据
   const category = '前端'
@@ -47,6 +46,12 @@ const PostId: FC<IProps> = memo((props) => {
       <Head>
         <title>{title}</title>
       </Head>
+
+      <PostCpns.SidePanel
+        {...info}
+        sideStatus={sideStatus}
+        setSideStatus={(b: boolean) => setSideStatus(b)}
+      />
 
       <div className={styles.left}>
         <h1 className={styles['article-title']}>{title}</h1>
@@ -85,22 +90,29 @@ const PostId: FC<IProps> = memo((props) => {
         </div>
       </div>
       <div className={styles.right}>
-        <PostAuthor author={author} />
+        {sideStatus && (
+          <>
+            <PostAuthor author={author} />
 
-        {banners?.map(item => (
-          <Banner key={item.id} {...item} hasDesc={false} />
-        ))}
+            {banners?.map(item => (
+              <Banner key={item.id} {...item} hasDesc={false} />
+            ))}
 
-        <PostCpns.Related articles={articles} />
+            <PostCpns.Related articles={articles} />
+          </>
+        )}
 
-        <div className={classNames({
-          [styles['side-fixed']]: sideFixed,
-          [styles.top]: isUp,
-        })}
+        <div
+          className={classNames({
+            [styles['side-fixed']]: sideFixed || !sideStatus,
+            [styles.top]: isUp,
+          })}
         >
           <PostCpns.Toc />
         </div>
       </div>
+
+      <PostCpns.TabBar {...info} />
     </div>
   )
 })

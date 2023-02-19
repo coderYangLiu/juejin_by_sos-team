@@ -1,0 +1,62 @@
+@import "@/styles/variables.less";
+
+.wrapper {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-bg-2);
+
+  button {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100px;
+    height: 40px;
+
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 8px 4px rgb(56 142 255 / 16%);
+    background: rgb(var(--arcoblue-5));
+    cursor: pointer;
+    line-height: 24px;
+    font-weight: 500;
+    color: var(--color-neutral-1);
+    transition: opacity .3s ease-in-out;
+    will-change: opacity;
+
+    &.hide {
+      opacity: 0;
+    }
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+.tabbar {
+  width: 80%;
+  height: 53px;
+  margin: 0 auto;
+  .normal-flex(row, space-around, center);
+
+  .divider {
+    margin: 0;
+  }
+
+  .item {
+    .normal-flex(row, center, center);
+    padding: 15px;
+
+    span {
+      padding-left: 3px;
+    }
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .wrapper {
+    display: block;
+  }
+}

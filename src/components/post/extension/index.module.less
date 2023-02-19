@@ -12,7 +12,8 @@
     margin-right: 8px;
   }
   .wrapper{
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
 
     .title{
       font-size: 1.333rem;
@@ -43,6 +44,7 @@
     transition: all .15s linear;
     box-sizing: border-box;
     background: none;
+    flex-shrink: 0;
 
     cursor: pointer;
     &:hover{

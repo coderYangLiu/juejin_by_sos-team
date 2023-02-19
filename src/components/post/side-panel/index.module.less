@@ -1,0 +1,50 @@
+.action-list {
+  //fix布局不占用文档流
+  position: fixed;
+  //与右侧间距
+  margin-left: -90px;
+  //固定在页面旁边
+  top: 140px;
+  .sideIcon {
+    position: relative;
+    margin-bottom: 1.667rem;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-bg-1);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 4%);
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 23px;
+
+    //通过-n+2指定点赞和评论有侧标
+    &.info:after{
+      content: attr(nonce);
+      position: absolute;
+      top: 0;
+      left: 75%;
+      height: 17px;
+      line-height: 17px;
+      padding: 0 5px;
+      border-radius: 9px;
+      font-size: 11px;
+      text-align: center;
+      background-color: var(--color-neutral-3);
+      color: #fff;
+    }
+
+    .icon {
+      margin-top: 15px;
+      font-size: 20px;
+      color: #8a919f;
+      &.active {
+        color: rgb(var(--arcoblue-6));
+      }
+
+      &:hover {
+        color: #291d20;
+      }
+    }
+  }
+}
