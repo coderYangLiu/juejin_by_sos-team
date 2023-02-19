@@ -1,5 +1,4 @@
 import React, { memo, useState } from 'react'
-import type { FC } from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
@@ -16,12 +15,14 @@ import { getArticleById } from '@/service/api'
 import type { IArticle } from '@/service/api/types'
 import { useLayout } from '@/hooks/useLayout'
 import { formatNumber } from '@/utiles/format'
+import type { NextPageWithLayout } from '@/pages/_app'
+import PostLayout from '@/components/lauout/post'
 
 export interface IProps {
   article: IArticle
 }
 
-const PostId: FC<IProps> = memo((props) => {
+const PostId: NextPageWithLayout<IProps> = memo((props) => {
   const { article } = props
   const { title, image, content, article_tags, author, info, createdAt }
     = article
@@ -116,6 +117,10 @@ const PostId: FC<IProps> = memo((props) => {
     </div>
   )
 })
+
+PostId.getLayout = (page) => {
+  return <PostLayout>{page}</PostLayout>
+}
 
 export const getServerSideProps = wrapper.getServerSideProps(
   store =>
