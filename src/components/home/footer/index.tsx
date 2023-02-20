@@ -84,7 +84,7 @@ const HomeFooter: FC<IProps> = memo(() => {
       </ul>
       <ul className={styles['more-list']}>
         <li className={styles.item}>
-          <a>©2023 稀土掘金</a>
+          <Link href="https://juejin.cn">©2023 稀土掘金</Link>
         </li>
       </ul>
 
