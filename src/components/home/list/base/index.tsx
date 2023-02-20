@@ -51,13 +51,13 @@ const BaseItem: FC<IProps> = memo((props) => {
         <div className={styles.main}>
           <div className={styles.title}>{title}</div>
           <div className={styles.desc}>
-            <a href="">{desc}</a>
+            <Link href={{ pathname: `/post/${id}` }} target="_blank">{desc}</Link>
           </div>
 
           {actionList}
         </div>
 
-        {image && <Image src={image} width={ 120} height={80} alt={''} /> }
+        {image && <Image src={image} width={128} height={72} alt={''} /> }
       </div>
     </Link>
   )

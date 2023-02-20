@@ -39,66 +39,21 @@ const LowerNav: FC<IProps> = memo((props) => {
         url: '/backend',
         badge: 0,
         children: [
-          {
-            name: '后端', // what the users see
-            url: '/backend', // where the link goes to
-          },
-          {
-            name: 'Java',
-            url: '/backend/java',
-          },
-          {
-            name: '掘金·日新计划',
-            url: '/backend',
-          },
-          {
-            name: 'Go',
-            url: '/backend/java',
-          },
-          {
-            name: '架构',
-            url: '/backend',
-          },
-          {
-            name: '数据库',
-            url: '/backend/java',
-          },
-          {
-            name: 'Spring Boot',
-            url: '/backend',
-          },
-          {
-            name: '掘金·百日计划',
-            url: '/backend/java',
-          },
-          {
-            name: 'Spring',
-            url: '/backend',
-          },
-          {
-            name: 'ElasticSearch',
-            url: '/backend/java',
-          },
-          {
-            name: '算法',
-            url: '/backend/java',
-          },
-          {
-            name: '面试',
-            url: '/backend/java',
-          },
-          {
-            name: 'MySQL',
-            url: '/backend/java',
-          },
-          {
-            name: 'Redis',
-            url: '/backend/java',
-          },
-          {
-            name: 'Kubernetes',
-            url: '/backend/java',
-          },
+          { name: '后端' },
+          { name: 'Java' },
+          { name: '掘金·日新计划' },
+          { name: 'Go' },
+          { name: '架构' },
+          { name: '数据库' },
+          { name: 'Spring Boot' },
+          { name: '掘金·百日计划' },
+          { name: 'Spring' },
+          { name: 'ElasticSearch' },
+          { name: '算法' },
+          { name: '面试' },
+          { name: 'MySQL' },
+          { name: 'Redis' },
+          { name: 'Kubernetes' },
         ],
       },
       {
@@ -157,7 +112,13 @@ const LowerNav: FC<IProps> = memo((props) => {
               return (
                 <li key={item.id} className={styles.navItem}>
                   <Badge count={item.badge} dot>
-                    <Link href={item.url} className={classNames({ [styles.activeItem]: active === item.id }, styles.name)}>
+                    <Link
+                      href={item.url}
+                      className={classNames(
+                        { [styles.activeItem]: active === item.id },
+                        styles.name,
+                      )}
+                    >
                       {item.name}
                     </Link>
                   </Badge>
@@ -166,7 +127,9 @@ const LowerNav: FC<IProps> = memo((props) => {
                     <ul className={styles.subNav}>
                       {item.children?.map(subItem => (
                         <li key={subItem.name} className={styles.subNavItem}>
-                          <Link href={subItem.url}>{subItem.name}</Link>
+                          <Link href={`${item.url}/${subItem.name}`}>
+                            {subItem.name}
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -176,7 +139,10 @@ const LowerNav: FC<IProps> = memo((props) => {
             })}
           </ul>
 
-          <Link href="/subscribe/subscribed" className={classNames(styles.subscribed, styles.navItem)}>
+          <Link
+            href="/subscribe/subscribed"
+            className={classNames(styles.subscribed, styles.navItem)}
+          >
             标签管理
           </Link>
         </div>
