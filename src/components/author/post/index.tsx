@@ -2,7 +2,7 @@ import { memo } from 'react'
 import type { FC, ReactElement } from 'react'
 import BaseAuthor from '../base'
 import type { IAuthor } from '@/service/api/types'
-import { formatNumber } from '@/utiles/format'
+import { formatNumber } from '@/utils/format'
 
 export interface IProps {
   children?: ReactElement

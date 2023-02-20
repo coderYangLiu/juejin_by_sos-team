@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import styles from './index.module.less'
 
 import type { IArticle } from '@/service/api/types'
-import formatTime from '@/utiles/format'
+import formatTime from '@/utils/format'
 
 export type IProps = {
   tag?: ReactElement // 广告

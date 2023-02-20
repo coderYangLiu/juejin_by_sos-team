@@ -14,7 +14,7 @@ import type { AppState } from '@/store'
 import { getArticleById } from '@/service/api'
 import type { IArticle } from '@/service/api/types'
 import { useLayout } from '@/hooks/useLayout'
-import { formatNumber } from '@/utiles/format'
+import { formatNumber } from '@/utils/format'
 import type { NextPageWithLayout } from '@/pages/_app'
 import PostLayout from '@/layout/post'
 

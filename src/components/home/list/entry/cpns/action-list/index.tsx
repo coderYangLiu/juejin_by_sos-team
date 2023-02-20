@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import styles from './index.module.less'
 import MyIcon from '@/components/common/icon'
 import type { IArticleInfo } from '@/service/api/types'
-import { formatNumber } from '@/utiles/format'
+import { formatNumber } from '@/utils/format'
 
 const ActionList: FC<IArticleInfo> = memo((props) => {
   const { view, comment, like } = props
