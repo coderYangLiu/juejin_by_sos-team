@@ -6,7 +6,7 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
 import { fetchMainNavs, wrapper } from '@/store'
-import BaseLayout from '@/components/lauout'
+import BaseLayout from '@/layout'
 
 import '@/assets/css/global.less'
 

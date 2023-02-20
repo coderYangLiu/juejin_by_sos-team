@@ -16,7 +16,7 @@ import type { IArticle } from '@/service/api/types'
 import { useLayout } from '@/hooks/useLayout'
 import { formatNumber } from '@/utiles/format'
 import type { NextPageWithLayout } from '@/pages/_app'
-import PostLayout from '@/components/lauout/post'
+import PostLayout from '@/layout/post'
 
 export interface IProps {
   article: IArticle
