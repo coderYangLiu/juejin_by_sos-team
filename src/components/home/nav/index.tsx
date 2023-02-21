@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import type { FC } from 'react'
 import Link from 'next/link'
 import { Badge } from '@arco-design/web-react'
@@ -7,7 +7,6 @@ import styles from './index.module.less'
 import { useLayout } from '@/hooks/useLayout'
 
 export interface IProps {
-  active?: number
   list?: Array<{
     id: number
     name: string
@@ -19,24 +18,23 @@ export interface IProps {
 
 const LowerNav: FC<IProps> = memo((props) => {
   const {
-    active = 0, // the current displayed navItem
     list = [
       {
         id: 0, // a key to distinguish the items
         name: '综合', // the name to be displayed on the screen
-        url: '/recommended', // the url of the link
+        url: '/', // the url of the link
         badge: 0, // if it is above zero, a dot badge will be displayed
       },
       {
         id: 1,
         name: '关注',
-        url: '/following',
+        url: '/',
         badge: 2,
       },
       {
         id: 2,
         name: '后端',
-        url: '/backend',
+        url: '/?type=后端',
         badge: 0,
         children: [
           { name: '后端' },
@@ -59,49 +57,67 @@ const LowerNav: FC<IProps> = memo((props) => {
       {
         id: 3,
         name: '前端',
-        url: '/frontend',
+        url: '/?type=前端',
         badge: 0,
+        children: [
+          { name: '前端' },
+          { name: 'JavaScript' },
+          { name: 'Vue.js' },
+          { name: '掘金·日新计划' },
+          { name: 'React.js' },
+          { name: 'CSS' },
+          { name: '面试' },
+          { name: 'Node.js' },
+          { name: '后端' },
+          { name: 'TypeScript' },
+          { name: '架构' },
+          { name: 'Flutter' },
+          { name: '前端框架' },
+          { name: 'Webpack' },
+          { name: '程序员' },
+        ],
       },
       {
         id: 4,
         name: 'Android',
-        url: '/android',
+        url: '/?type=Android',
         badge: 0,
       },
       {
         id: 5,
         name: 'iOS',
-        url: '/ios',
+        url: '/?type=iOS',
         badge: 0,
       },
       {
         id: 6,
         name: '人工智能',
-        url: '/ai',
+        url: '/?type=人工智能',
         badge: 0,
       },
       {
         id: 7,
         name: '开发工具',
-        url: '/freebie',
+        url: '/?type=人工智能',
         badge: 0,
       },
       {
         id: 8,
         name: '代码人生',
-        url: '/career',
+        url: '/?type=代码人生',
         badge: 0,
       },
       {
         id: 9,
         name: '阅读',
-        url: '/article',
+        url: '/?type=阅读',
         badge: 0,
       },
     ],
   } = props
 
   const { isUp } = useLayout()
+  const [currentActive, setActive] = useState(0)
 
   return (
     <>
@@ -115,9 +131,10 @@ const LowerNav: FC<IProps> = memo((props) => {
                     <Link
                       href={item.url}
                       className={classNames(
-                        { [styles.activeItem]: active === item.id },
+                        { [styles.activeItem]: currentActive === item.id },
                         styles.name,
                       )}
+                      onClick={() => setActive(item.id)}
                     >
                       {item.name}
                     </Link>
@@ -127,7 +144,7 @@ const LowerNav: FC<IProps> = memo((props) => {
                     <ul className={styles.subNav}>
                       {item.children?.map(subItem => (
                         <li key={subItem.name} className={styles.subNavItem}>
-                          <Link href={`${item.url}/${subItem.name}`}>
+                          <Link href={`/?type=${subItem.name}`} onClick={() => setActive(item.id)}>
                             {subItem.name}
                           </Link>
                         </li>
