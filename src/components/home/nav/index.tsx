@@ -1,12 +1,14 @@
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import type { FC } from 'react'
 import Link from 'next/link'
 import { Badge } from '@arco-design/web-react'
 import classNames from 'classnames'
+import { useRouter } from 'next/router'
 import styles from './index.module.less'
 import { useLayout } from '@/hooks/useLayout'
 
 export interface IProps {
+  active?: number
   list?: Array<{
     id: number
     name: string
@@ -22,19 +24,19 @@ const LowerNav: FC<IProps> = memo((props) => {
       {
         id: 0, // a key to distinguish the items
         name: '综合', // the name to be displayed on the screen
-        url: '/', // the url of the link
+        url: 'recommended', // the url of the link
         badge: 0, // if it is above zero, a dot badge will be displayed
       },
       {
         id: 1,
         name: '关注',
-        url: '/',
+        url: 'following',
         badge: 2,
       },
       {
         id: 2,
         name: '后端',
-        url: '/?type=后端',
+        url: 'backend',
         badge: 0,
         children: [
           { name: '后端' },
@@ -57,74 +59,56 @@ const LowerNav: FC<IProps> = memo((props) => {
       {
         id: 3,
         name: '前端',
-        url: '/?type=前端',
+        url: 'frontend',
         badge: 0,
-        children: [
-          { name: '前端' },
-          { name: 'JavaScript' },
-          { name: 'Vue.js' },
-          { name: '掘金·日新计划' },
-          { name: 'React.js' },
-          { name: 'CSS' },
-          { name: '面试' },
-          { name: 'Node.js' },
-          { name: '后端' },
-          { name: 'TypeScript' },
-          { name: '架构' },
-          { name: 'Flutter' },
-          { name: '前端框架' },
-          { name: 'Webpack' },
-          { name: '程序员' },
-        ],
       },
       {
         id: 4,
         name: 'Android',
-        url: '/?type=Android',
+        url: 'android',
         badge: 0,
       },
       {
         id: 5,
         name: 'iOS',
-        url: '/?type=iOS',
+        url: 'ios',
         badge: 0,
       },
       {
         id: 6,
         name: '人工智能',
-        url: '/?type=人工智能',
+        url: 'ai',
         badge: 0,
       },
       {
         id: 7,
         name: '开发工具',
-        url: '/?type=人工智能',
+        url: 'freebie',
         badge: 0,
       },
       {
         id: 8,
         name: '代码人生',
-        url: '/?type=代码人生',
+        url: 'career',
         badge: 0,
       },
       {
         id: 9,
         name: '阅读',
-        url: '/?type=阅读',
+        url: 'article',
         badge: 0,
       },
     ],
   } = props
 
-  // const [currentPath, setCurrentPath] = useState('/recommended')
+  const [currentPath, setCurrentPath] = useState('/recommended')
 
-  // const router = useRouter()
-  // useEffect(() => {
-  //   setCurrentPath(router.asPath)
-  // }, [router])
+  const router = useRouter()
+  useEffect(() => {
+    setCurrentPath(router.asPath === '/' ? '/recommended' : router.asPath)
+  }, [router])
 
   const { isUp } = useLayout()
-  const [currentActive, setActive] = useState(0)
 
   return (
     <>
@@ -139,10 +123,9 @@ const LowerNav: FC<IProps> = memo((props) => {
                       href={{ query: { category: item.url } }}
                       as={item.url}
                       className={classNames(
-                        { [styles.activeItem]: currentActive === item.id },
+                        { [styles.activeItem]: currentPath.includes(item.url) },
                         styles.name,
                       )}
-                      onClick={() => setActive(item.id)}
                     >
                       {item.name}
                     </Link>
@@ -152,7 +135,7 @@ const LowerNav: FC<IProps> = memo((props) => {
                     <ul className={styles.subNav}>
                       {item.children?.map(subItem => (
                         <li key={subItem.name} className={styles.subNavItem}>
-                          <Link href={`/?type=${subItem.name}`} onClick={() => setActive(item.id)}>
+                          <Link href={`${item.url}/${subItem.name}`}>
                             {subItem.name}
                           </Link>
                         </li>
