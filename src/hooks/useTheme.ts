@@ -10,6 +10,7 @@ export const useTheme = () => {
       (mode === 'light') && setDark()
     else
       (mode === 'dark') && setDark()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function setDark() {

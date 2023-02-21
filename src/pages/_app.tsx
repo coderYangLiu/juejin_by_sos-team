@@ -6,10 +6,9 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
 import { fetchMainNavs, wrapper } from '@/store'
+import BaseLayout from '@/layout'
 
-//
-import '@/styles/globals.less'
-import BaseLayout from '@/components/lauout'
+import '@/assets/css/global.less'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
