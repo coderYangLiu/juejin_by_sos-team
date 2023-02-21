@@ -61,7 +61,7 @@ const PostId: NextPageWithLayout<IProps> = memo((props) => {
           <User
             author={{
               ...author,
-              position: `${showDate} · 阅读 ${formatNumber(info.view)}`,
+              position: `${showDate} · 阅读 ${formatNumber(info?.view ?? 0)}`,
             }}
           />
         </div>

@@ -9,7 +9,7 @@ import { useScroll } from '@/hooks/useScroll'
 
 type IProps = IArticleInfo & {}
 
-const TabBar: FC<IProps> = memo(({ like, comment }) => {
+const TabBar: FC<IProps> = memo(({ like = 0, comment = 0 }) => {
   const { changeDistanc } = useScroll()
 
   return (

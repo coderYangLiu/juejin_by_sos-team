@@ -12,7 +12,7 @@ type IProps = IArticleInfo & {
   setSideStatus: (b: boolean) => void
 }
 
-const SidePanel: FC<IProps> = memo(({ sideStatus, setSideStatus, like, comment }) => {
+const SidePanel: FC<IProps> = memo(({ sideStatus, setSideStatus, like = 0, comment = 0 }) => {
 /* 控制前四个icon的显示与隐藏 */
   const hidden = () => {
     setSideStatus(!sideStatus)

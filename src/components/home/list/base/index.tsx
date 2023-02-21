@@ -31,10 +31,10 @@ const BaseItem: FC<IProps> = memo((props) => {
   const showDateString = formatTime(new Date(createdAt).getTime())
 
   return (
-    <Link href={{ pathname: `/post/${id}` }} target="_blank" className={styles.base}>
+    <div className={styles.base}>
       <div className={styles['meta-container']}>
         {/* 作者 */}
-        {author && <div className={styles.item}><Link href=""> {author.name} </Link></div> }
+        {author && <div className={styles.item}><Link href={author.href}> {author.name} </Link></div> }
         {/* 时间 */}
         {createdAt && <div className={classNames([styles.item], [styles.date])}>  {showDateString}  </div> }
         {/* 标签 */}
@@ -47,19 +47,21 @@ const BaseItem: FC<IProps> = memo((props) => {
 
       {tag && <div className={styles.tag}> {tag} </div>}
 
-      <div className={styles['content-wrapper']}>
-        <div className={styles.main}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.desc}>
-            <Link href={{ pathname: `/post/${id}` }} target="_blank">{desc}</Link>
+      <Link href={{ pathname: `/post/${id}` }} target="_blank" style={{ width: '100%' }}>
+        <div className={styles['content-wrapper']}>
+          <div className={styles.main}>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.desc}>
+              {desc}
+            </div>
+
+            {actionList}
           </div>
 
-          {actionList}
+          {image && <Image className={styles.img} src={image} width={128} height={72} alt={''} /> }
         </div>
-
-        {image && <Image src={image} width={128} height={72} alt={''} /> }
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 })
 

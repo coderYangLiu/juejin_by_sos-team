@@ -76,7 +76,9 @@
   }
 
   .content-wrapper {
+    width: 100%;
     display: flex;
+    justify-content: space-around;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--color-neutral-3);
     margin-top: 10px;
@@ -96,13 +98,13 @@
 
       .desc {
         margin-bottom: 10px;
-
-        a {
-          color: var(--color-neutral-6);
-
-          .text-multi-ellipsis(1);
-        }
+        color: var(--color-neutral-6);
+        .text-multi-ellipsis(1);
       }
+    }
+
+    .img {
+      flex: 0 0 128px;
     }
   }
 }

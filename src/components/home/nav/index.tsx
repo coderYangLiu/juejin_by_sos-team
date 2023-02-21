@@ -116,6 +116,13 @@ const LowerNav: FC<IProps> = memo((props) => {
     ],
   } = props
 
+  // const [currentPath, setCurrentPath] = useState('/recommended')
+
+  // const router = useRouter()
+  // useEffect(() => {
+  //   setCurrentPath(router.asPath)
+  // }, [router])
+
   const { isUp } = useLayout()
   const [currentActive, setActive] = useState(0)
 
