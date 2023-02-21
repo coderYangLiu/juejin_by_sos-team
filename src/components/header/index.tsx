@@ -4,6 +4,7 @@ import { Button } from '@arco-design/web-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import classNames from 'classnames'
+import { IconMoon, IconSun } from '@arco-design/web-react/icon'
 import styles from './index.module.less'
 import HeaderNav from './cpns/nav'
 import { useTheme } from '@/hooks/useTheme'
@@ -14,7 +15,7 @@ export interface IProps {
 }
 
 const Header: FC<IProps> = memo(() => {
-  const { setDark } = useTheme()
+  const { setDark, isDark } = useTheme()
   const { isUp } = useLayout()
 
   return (
@@ -44,9 +45,7 @@ const Header: FC<IProps> = memo(() => {
             <HeaderNav active={0}/>
 
             <div className={styles['right-side-nav']}>
-              <Button type="primary" onClick={setDark}>
-                change Theme
-              </Button>
+              <Button onClick={setDark} shape='circle' icon={isDark ? <IconMoon /> : <IconSun />} />
             </div>
           </div>
         </header>

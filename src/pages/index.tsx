@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import Link from 'next/link'
-import { Divider, Skeleton } from '@arco-design/web-react'
+import { BackTop, Button, Divider, Skeleton } from '@arco-design/web-react'
+import { IconUp } from '@arco-design/web-react/icon'
 import classNames from 'classnames'
 
 import type { FC } from 'react'
@@ -30,7 +31,6 @@ const navs = [
 ]
 
 const Home: FC = () => {
-  const { sideFixed, isUp } = useLayout(2)
   const [currentSort, setCurrentSort] = useState('')
   const [currentType, setCurrentType] = useState('')
   const router = useRouter()
@@ -40,14 +40,12 @@ const Home: FC = () => {
     homeData: state.home.homeData,
     articles: state.home.articles,
   }))
+  const { sideFixed, isUp } = useLayout(homeData.banners?.length ?? 2)
 
   useEffect(() => {
     // sort
     const sort = (router.query.sort ?? '') as string
     setCurrentSort(sort)
-    // type
-    const type = (router.query.type ?? '') as string
-    setCurrentType(type)
 
     dispatch(fetchArticles({}))
   }, [router.query, dispatch])
@@ -119,6 +117,10 @@ const Home: FC = () => {
           {!sideFixed && (<>  <HomeCard.Links /> <HomeCpns.Footer /> </>)}
         </div>
       </div>
+
+      <BackTop visibleHeight={600} style={{ bottom: '80px' }}>
+        <Button className={styles['top-btn']} shape='circle' size='large' icon={<IconUp />} />
+      </BackTop>
     </div>
   )
 }

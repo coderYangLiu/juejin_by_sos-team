@@ -136,7 +136,8 @@ const LowerNav: FC<IProps> = memo((props) => {
                 <li key={item.id} className={styles.navItem}>
                   <Badge count={item.badge} dot>
                     <Link
-                      href={item.url}
+                      href={{ query: { category: item.url } }}
+                      as={item.url}
                       className={classNames(
                         { [styles.activeItem]: currentActive === item.id },
                         styles.name,

@@ -30,7 +30,7 @@ const HeaderNav: FC<IProps> = memo((props) => {
       {
         mainNav.map(item => (
           <li className={ classNames(styles.navItem, { [styles.noborder]: item.types !== 'nav' }) } key={item.id}>
-            <Link href={item.path} className={ item.path === router.asPath ? styles.activeText : styles.navText } >
+            <Link href={item.path} className={ item.path === router.pathname ? styles.activeText : styles.navText } >
               {item.types === 'img' ? <Image src={item.name} priority alt="" width={115} height={40} /> : item.name}
               {item.tag && <div className={styles.tag}>{item.tag}</div>}
             </Link>
