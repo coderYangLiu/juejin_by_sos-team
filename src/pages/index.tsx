@@ -32,6 +32,7 @@ const navs = [
 
 const Home: FC = () => {
   const [currentSort, setCurrentSort] = useState('')
+  const [currentType, setCurrentType] = useState('')
   const router = useRouter()
   const dispatch: AppDispatch = useDispatch()
 
@@ -45,16 +46,19 @@ const Home: FC = () => {
     // sort
     const sort = (router.query.sort ?? '') as string
     setCurrentSort(sort)
-    console.log('index', sort)
 
     dispatch(fetchArticles({}))
   }, [router.query, dispatch])
 
   const getHomeList = (item: IArticle) => {
-    if (item.type === 'article')
-      return <HomeList.EntryItem key={item.id} {...item} />
-    else if (item.type === 'ad')
+    if (item.type === 'article') {
+      if (!currentType || item.article_tags.map(tag => tag.name).includes(currentType))
+        return <HomeList.EntryItem key={item.id} {...item} />
+    }
+    else
+    if (item.type === 'ad') {
       return <HomeList.AdvertisementItem key={item.id} {...item} />
+    }
   }
 
   return (
@@ -85,7 +89,7 @@ const Home: FC = () => {
           </nav>
 
           {/* 文章列表 */}
-          {articles.length > 0 ? articles?.map(getHomeList) : <Skeleton animation style={{ padding: '20px' }}/>}
+          {articles.length > 0 ? articles?.map(getHomeList) : <Skeleton animation style={{ padding: '20px' }} />}
 
         </div>
 
@@ -107,7 +111,7 @@ const Home: FC = () => {
             ))}
             <HomeCard.Download />
             {/* Users */}
-            {!sideFixed && homeData.authors && <HomeCard.Users authors={homeData.authors}/>}
+            {!sideFixed && homeData.authors && <HomeCard.Users authors={homeData.authors} />}
           </div>
           {/* Links & Footer 不需要固定 */}
           {!sideFixed && (<>  <HomeCard.Links /> <HomeCpns.Footer /> </>)}
