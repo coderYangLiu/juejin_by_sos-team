@@ -45,7 +45,7 @@ const Home: FC = () => {
     // sort
     const sort = (router.query.sort ?? '') as string
     setCurrentSort(sort)
-    // type
+    // filter by article type
     const type = (router.query.type ?? '') as string
     setCurrentType(type)
 
