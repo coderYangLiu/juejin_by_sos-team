@@ -24,19 +24,19 @@ const LowerNav: FC<IProps> = memo((props) => {
       {
         id: 0, // a key to distinguish the items
         name: '综合', // the name to be displayed on the screen
-        url: '/recommended', // the url of the link
+        url: 'recommended', // the url of the link
         badge: 0, // if it is above zero, a dot badge will be displayed
       },
       {
         id: 1,
         name: '关注',
-        url: '/following',
+        url: 'following',
         badge: 2,
       },
       {
         id: 2,
         name: '后端',
-        url: '/backend',
+        url: 'backend',
         badge: 0,
         children: [
           { name: '后端' },
@@ -59,43 +59,43 @@ const LowerNav: FC<IProps> = memo((props) => {
       {
         id: 3,
         name: '前端',
-        url: '/frontend',
+        url: 'frontend',
         badge: 0,
       },
       {
         id: 4,
         name: 'Android',
-        url: '/android',
+        url: 'android',
         badge: 0,
       },
       {
         id: 5,
         name: 'iOS',
-        url: '/ios',
+        url: 'ios',
         badge: 0,
       },
       {
         id: 6,
         name: '人工智能',
-        url: '/ai',
+        url: 'ai',
         badge: 0,
       },
       {
         id: 7,
         name: '开发工具',
-        url: '/freebie',
+        url: 'freebie',
         badge: 0,
       },
       {
         id: 8,
         name: '代码人生',
-        url: '/career',
+        url: 'career',
         badge: 0,
       },
       {
         id: 9,
         name: '阅读',
-        url: '/article',
+        url: 'article',
         badge: 0,
       },
     ],
@@ -105,7 +105,7 @@ const LowerNav: FC<IProps> = memo((props) => {
 
   const router = useRouter()
   useEffect(() => {
-    setCurrentPath(router.asPath)
+    setCurrentPath(router.asPath === '/' ? '/recommended' : router.asPath)
   }, [router])
 
   const { isUp } = useLayout()
@@ -120,7 +120,8 @@ const LowerNav: FC<IProps> = memo((props) => {
                 <li key={item.id} className={styles.navItem}>
                   <Badge count={item.badge} dot>
                     <Link
-                      href={item.url}
+                      href={{ query: { category: item.url } }}
+                      as={item.url}
                       className={classNames(
                         { [styles.activeItem]: currentPath.includes(item.url) },
                         styles.name,
