@@ -22,7 +22,7 @@ const mainSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(HYDRATE, (state, action: any) => ({ ...state, ...action.payload.main }))
-      .addCase(fetchMainNavs.fulfilled, (state, action) => { state.mainNav = action.payload })
+      .addCase(fetchMainNavs.fulfilled, (state, action) => { state.mainNav = action.payload.sort((a, b) => a.order - b.order) })
   },
 })
 

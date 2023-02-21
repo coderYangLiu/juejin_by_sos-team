@@ -39,9 +39,10 @@ const homeSlice = createSlice({
       .addCase(fetchHomeData.fulfilled, (state, action) => { state.homeData = action.payload })
       .addCase(fetchHomeNav.fulfilled, (state, action) => { state.homeNav = action.payload })
       .addCase(fetchArticles.fulfilled, (state, action) => {
-        do
-          state.articles = state.articles.concat(action.payload)
-        while (state.articles.length < 20)
+        state.articles = state.articles.concat(action.payload)
+        // do
+        //   state.articles = state.articles.concat(action.payload)
+        // while (state.articles.length < 20)
       })
   },
 })

@@ -1,8 +1,9 @@
-import { memo } from 'react'
+import { memo, useEffect, useState } from 'react'
 import type { FC } from 'react'
 import Link from 'next/link'
 import { Badge } from '@arco-design/web-react'
 import classNames from 'classnames'
+import { useRouter } from 'next/router'
 import styles from './index.module.less'
 import { useLayout } from '@/hooks/useLayout'
 
@@ -19,7 +20,6 @@ export interface IProps {
 
 const LowerNav: FC<IProps> = memo((props) => {
   const {
-    active = 0, // the current displayed navItem
     list = [
       {
         id: 0, // a key to distinguish the items
@@ -101,6 +101,13 @@ const LowerNav: FC<IProps> = memo((props) => {
     ],
   } = props
 
+  const [currentPath, setCurrentPath] = useState('/recommended')
+
+  const router = useRouter()
+  useEffect(() => {
+    setCurrentPath(router.asPath)
+  }, [router])
+
   const { isUp } = useLayout()
 
   return (
@@ -115,7 +122,7 @@ const LowerNav: FC<IProps> = memo((props) => {
                     <Link
                       href={item.url}
                       className={classNames(
-                        { [styles.activeItem]: active === item.id },
+                        { [styles.activeItem]: currentPath.includes(item.url) },
                         styles.name,
                       )}
                     >

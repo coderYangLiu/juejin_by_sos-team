@@ -44,6 +44,7 @@ const Home: FC = () => {
     // sort
     const sort = (router.query.sort ?? '') as string
     setCurrentSort(sort)
+    console.log(sort)
 
     dispatch(fetchArticles({}))
   }, [router.query, dispatch])
