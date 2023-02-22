@@ -44,7 +44,6 @@ const HomeType: FC = () => {
     // sort
     const sort = (router.query.sort ?? '') as string
     setCurrentSort(sort)
-    console.log('category', sort, router)
 
     dispatch(fetchArticles({}))
   }, [router, router.query, dispatch])
