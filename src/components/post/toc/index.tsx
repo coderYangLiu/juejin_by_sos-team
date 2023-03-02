@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react'
 import type { FC, ReactElement } from 'react'
 import classNames from 'classnames'
-import { debounce } from 'lodash-es'
+import { throttle } from 'lodash-es'
 import { useRouter } from 'next/router'
 import styles from './index.module.less'
 import BaseCard from '@/components/common/card'
@@ -24,13 +24,17 @@ const PostTOC: FC<IProps> = memo(() => {
   const [minLevel, setMinLevel] = useState(6)
   const [headings, setHeadings] = useState<ICatalogue[]>([])
   const [activeIdx, setActiveIdx] = useState(0)
+  const [isScroll, setIsScroll] = useState(true)
 
   const tcoRef = useRef<HTMLUListElement>(null)
+  const tocBlock = useRef<HTMLDivElement>(null)
 
   function transformToId(index: number, offset = 0) {
+    setIsScroll(false)
     document.querySelector(`#heading-${index}`)?.scrollIntoView()
 
     setTimeout(() => {
+      setIsScroll(true)
       if (isUp)
         window.scrollTo(0, window.scrollY - 60 + offset)
     }, 20)
@@ -68,33 +72,29 @@ const PostTOC: FC<IProps> = memo(() => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const onScroll = throttle(() => {
+    if (!isScroll)
+      return
+    let idx = 0
+    const index = headings.findIndex((item) => {
+      return item.top > window.scrollY
+    })
+    idx = index === -1 ? headings.length - 1 : index === 0 ? 0 : index - 1
+
+    setActiveIdx(idx)
+
+    if (sideFixed)
+      tcoRef.current?.querySelector(`[href='#heading-${activeIdx}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, 150)
+
   useEffect(() => {
-    const onScroll = debounce(() => {
-      let index = headings.findIndex((item) => {
-        return item.top > window.scrollY
-      })
-
-      if (index > -1 && index <= headings.length - 1) {
-        if (index !== 0)
-          index -= 1
-      }
-      else {
-        index = headings.length - 1
-      }
-      setActiveIdx(index)
-
-      index > 0 && sideFixed && tcoRef.current?.querySelector(`[href='#heading-${activeIdx}']`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }, 150)
-
     window?.addEventListener('scroll', onScroll)
 
-    return () => {
-      window?.removeEventListener('scroll', onScroll)
-    }
+    return () => window?.removeEventListener('scroll', onScroll)
   })
 
   return (
-    <div className="sidebar-block">
+    <div className="sidebar-block" ref={tocBlock}>
       <BaseCard title="目录">
         <ul ref={tcoRef} className={styles['catalog-list']}>
           {headings.map((item, index) => {
@@ -102,11 +102,11 @@ const PostTOC: FC<IProps> = memo(() => {
               <li
                 key={item.href}
                 onClick={() => transformToId(index)}
-                className={classNames({ [styles.active]: activeIdx === (isUp ? index - 1 : index) }, styles.item)}
+                className={classNames({ [styles.active]: activeIdx === index }, styles.item)}
                 style={{ paddingLeft: `${(item.level - minLevel) * 16 + 8}px` }}
               >
                 <div className={styles['a-container']}>
-                  <a href={item.href} className={styles['catalog-aTag']}>
+                  <a href={item.href} className={styles['catalog-aTag']} title={item.text}>
                     {item.text}
                   </a>
                 </div>
