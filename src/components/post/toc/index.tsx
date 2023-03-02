@@ -9,6 +9,7 @@ import { useLayout } from '@/hooks/useLayout'
 
 export interface IProps {
   children?: ReactElement
+  offset?: number
 }
 
 interface ICatalogue {
@@ -18,9 +19,9 @@ interface ICatalogue {
   top: number
 }
 
-const PostTOC: FC<IProps> = memo(() => {
+const PostTOC: FC<IProps> = memo(({ offset }) => {
   const router = useRouter()
-  const { isUp, sideFixed } = useLayout()
+  const { isUp, sideFixed } = useLayout(1, offset)
   const [minLevel, setMinLevel] = useState(6)
   const [headings, setHeadings] = useState<ICatalogue[]>([])
   const [activeIdx, setActiveIdx] = useState(0)

@@ -30,7 +30,8 @@ const PostId: NextPageWithLayout<IProps> = memo((props) => {
     postData: store.post.postData,
   }))
   const { banners, articles } = postData
-  const { sideFixed, isUp } = useLayout()
+  const offset = -220
+  const { sideFixed, isUp } = useLayout(1, offset)
 
   const showDate = new Date(createdAt).toLocaleString()
   const [sideStatus, setSideStatus] = useState(true)
@@ -109,7 +110,7 @@ const PostId: NextPageWithLayout<IProps> = memo((props) => {
             [styles.top]: isUp,
           })}
         >
-          <PostCpns.Toc />
+          <PostCpns.Toc offset={offset}/>
         </div>
       </div>
 
