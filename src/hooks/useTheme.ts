@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+const THEME_KEY = 'JUEJIN_THEME'
 
 export const useTheme = () => {
   const [isDark, setTheme] = useState(false)
 
   useEffect(() => {
-    const mode = window.localStorage.getItem('themme') ?? 'light'
+    const mode = window.localStorage.getItem(THEME_KEY) ?? 'light'
 
     if (isDark)
       (mode === 'light') && setDark()
@@ -17,12 +18,12 @@ export const useTheme = () => {
     if (isDark) {
       setTheme(false)
       document.body.removeAttribute('arco-theme')
-      window.localStorage.setItem('themme', 'light')
+      window.localStorage.setItem(THEME_KEY, 'light')
     }
     else {
       setTheme(true)
       document.body.setAttribute('arco-theme', 'dark')
-      window.localStorage.setItem('themme', 'dark')
+      window.localStorage.setItem(THEME_KEY, 'dark')
     }
   }
 
